@@ -62,13 +62,17 @@ export default function Booking() {
           <p
             style={{
               fontSize: 15,
-              lineHeight: 1.75,
+              lineHeight: 1.8,
               color: 'rgba(240,237,232,0.55)',
               marginBottom: 36,
-              maxWidth: 380,
+              maxWidth: 400,
             }}
           >
-            הדייטים ל-2026 מתמלאים. אנחנו לוקחים מספר מוגבל של אירועים בעונה — כדי שכל זוג יקבל את מלוא תשומת הלב.
+            אנחנו לא לוקחים כל אירוע. לוקחים מספר מוגבל בעונה — כי כל זוג מקבל מאיתנו את המלוא, לא פחות.
+            <br /><br />
+            <span style={{ color: 'rgba(240,237,232,0.8)', fontWeight: 600 }}>
+              אם התאריך שלכם פנוי — שלחו פרטים. נחזור תוך 24 שעות.
+            </span>
           </p>
 
           {/* Urgency indicator */}

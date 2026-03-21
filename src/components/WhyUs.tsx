@@ -3,24 +3,24 @@ import { useEffect, useRef } from 'react'
 const pillars = [
   {
     num: '01',
-    title: 'SET חי בקבלת הפנים',
-    tagline: 'הרגע שמגדיר את כל הלילה.',
-    body: 'בזמן שאתם יורדים לחופה, האורחים כבר בתוך אווירה. לא מוזיקת רקע — סט אלקטרוני חי שמיד מסמן: הלילה הזה שונה. אף DJ אחר בארץ לא עושה את זה.',
     icon: '🎛',
+    title: 'SET אלקטרוני חי',
+    tagline: 'מה שאף DJ אחר בארץ לא נותן.',
+    body: 'בזמן שאתם יורדים לחופה — האורחים שלכם כבר בתוך חוויה. לא מוזיקת רקע. לא שיר אחד. סט אלקטרוני חי על תופים ומקלדת, שמגדיר מהרגע הראשון: הלילה הזה שונה.',
   },
   {
     num: '02',
-    title: 'שניים. תמיד.',
-    tagline: 'אחד על הציוד — אחד על הזוג.',
-    body: 'מאור ואופק. כשאחד בונה את הסט, השני פנוי לכם — לרגעים, לשינויים, לסורפריזים. שאר ה-DJים עושים את זה לבד. אנחנו לא.',
     icon: '👥',
+    title: 'שניים. תמיד.',
+    tagline: 'אחד על הסט — אחד עליכם.',
+    body: 'מאור ואופק. בזמן שאחד בונה את האווירה, השני פנוי לכם — לרגעים, לשינויים, לסורפריזים. זה ההבדל בין DJ שמנגן לבין צוות שמנהל לכם לילה שלם.',
   },
   {
     num: '03',
-    title: 'ניהול מלא, לילה שלם',
-    tagline: 'אתם חיים. אנחנו על הכל.',
-    body: 'קבלת פנים, חופה, ריקודים, אפטר — אנחנו מנהלים כל שלב. קולטים את הקהל, עוברים בין סגנונות, מתאימים בזמן אמת. הזוג לא מרגיש לחץ של כלום.',
     icon: '🌙',
+    title: 'אתם חיים את הרגע',
+    tagline: 'אנחנו על הכל מהרגע הראשון.',
+    body: 'קבלת פנים, חופה, ריקודים, אפטר — אנחנו מנהלים כל שלב. מגיבים לקהל בזמן אמת, מתאימים את הסאונד, מוודאים שאתם לא מרגישים לחץ של כלום — רק שמחה.',
   },
 ]
 
@@ -31,9 +31,7 @@ export default function WhyUs() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible')
-          }
+          if (entry.isIntersecting) entry.target.classList.add('visible')
         })
       },
       { threshold: 0.1 }
@@ -48,34 +46,49 @@ export default function WhyUs() {
       ref={ref}
       style={{
         background: '#06060a',
-        padding: 'clamp(64px, 8vw, 120px) 48px',
+        padding: 'clamp(72px, 9vw, 128px) 48px',
       }}
     >
       {/* Header */}
-      <div style={{ marginBottom: 64, maxWidth: 640 }}>
-        <span className="eyebrow" style={{ marginBottom: 16, display: 'block' }}>
+      <div style={{ marginBottom: 72, maxWidth: 600 }}>
+        <span className="eyebrow" style={{ marginBottom: 20, display: 'block' }}>
           // למה TOX1C
         </span>
         <h2
           className="bebas"
           dir="ltr"
           style={{
-            fontSize: 'clamp(42px, 6vw, 80px)',
-            lineHeight: 0.95,
+            fontSize: 'clamp(44px, 6vw, 84px)',
+            lineHeight: 0.92,
             letterSpacing: '0.02em',
+            marginBottom: 24,
           }}
         >
           NOT YOUR
           <br />
-          <span style={{ WebkitTextStroke: '2px rgba(240,237,232,0.25)', color: 'transparent' }}>
+          <span
+            style={{ WebkitTextStroke: '2px rgba(240,237,232,0.22)', color: 'transparent' }}
+          >
             AVERAGE
           </span>
           <br />
           <span style={{ color: '#c9a84c' }}>WEDDING DJ.</span>
         </h2>
+        <p
+          style={{
+            fontSize: 15,
+            lineHeight: 1.75,
+            color: 'rgba(240,237,232,0.5)',
+            maxWidth: 480,
+          }}
+        >
+          כלות שנכנסות לאירוע שלנו יוצאות עם הודעות — "מי היה ה-DJ שלכם?" שנים אחרי.
+          <br />
+          זה לא מקרה. זה מה שאנחנו בונים בכוונה.
+        </p>
       </div>
 
-      {/* Cards grid */}
+      {/* Cards */}
       <div
         style={{
           display: 'grid',
@@ -89,53 +102,55 @@ export default function WhyUs() {
             className="reveal"
             style={{
               background: '#111116',
-              padding: '40px 36px',
+              padding: '44px 36px',
               borderTop: '2px solid #c9a84c',
               position: 'relative',
+              overflow: 'hidden',
               transition: 'background 0.3s',
             }}
             onMouseEnter={(e) =>
-              ((e.currentTarget as HTMLElement).style.background = '#1a1a20')
+              ((e.currentTarget as HTMLElement).style.background = '#18181f')
             }
             onMouseLeave={(e) =>
               ((e.currentTarget as HTMLElement).style.background = '#111116')
             }
           >
-            {/* Number */}
+            {/* Ghost number */}
             <div
               className="bebas"
               style={{
-                fontSize: 80,
+                fontSize: 90,
                 lineHeight: 0.85,
-                color: 'rgba(201,168,76,0.08)',
+                color: 'rgba(201,168,76,0.06)',
                 position: 'absolute',
-                top: 24,
-                left: 28,
+                top: 16,
+                left: 24,
                 letterSpacing: '0.02em',
+                userSelect: 'none',
               }}
             >
               {p.num}
             </div>
 
             <div style={{ position: 'relative', zIndex: 1 }}>
-              <div style={{ fontSize: 28, marginBottom: 20 }}>{p.icon}</div>
-
+              <div style={{ fontSize: 30, marginBottom: 24 }}>{p.icon}</div>
               <h3
                 style={{
-                  fontSize: 18,
+                  fontSize: 19,
                   fontWeight: 700,
                   marginBottom: 8,
                   color: '#f0ede8',
+                  lineHeight: 1.3,
                 }}
               >
                 {p.title}
               </h3>
               <p
                 style={{
-                  fontSize: 13,
+                  fontSize: 12,
                   color: '#c9a84c',
-                  letterSpacing: 1,
-                  marginBottom: 16,
+                  letterSpacing: 1.2,
+                  marginBottom: 18,
                   fontWeight: 500,
                 }}
               >
@@ -144,8 +159,8 @@ export default function WhyUs() {
               <p
                 style={{
                   fontSize: 14,
-                  lineHeight: 1.75,
-                  color: 'rgba(240,237,232,0.55)',
+                  lineHeight: 1.8,
+                  color: 'rgba(240,237,232,0.52)',
                 }}
               >
                 {p.body}
@@ -155,22 +170,49 @@ export default function WhyUs() {
         ))}
       </div>
 
-      {/* Bottom CTA */}
-      <div style={{ marginTop: 56, display: 'flex', alignItems: 'center', gap: 24 }}>
-        <div style={{ height: 1, flex: 1, background: 'rgba(201,168,76,0.15)' }} />
+      {/* Pull-quote strip */}
+      <div
+        className="reveal"
+        style={{
+          marginTop: 2,
+          background: '#111116',
+          borderTop: '1px solid rgba(201,168,76,0.12)',
+          padding: '32px 40px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 24,
+          flexWrap: 'wrap',
+          justifyContent: 'space-between',
+        }}
+      >
+        <p
+          style={{
+            fontSize: 15,
+            color: 'rgba(240,237,232,0.6)',
+            fontStyle: 'italic',
+            maxWidth: 560,
+            lineHeight: 1.7,
+          }}
+        >
+          "לא הרגשנו לחץ של כלום ביום החתונה — הרגשנו שיש מישהו שמנהל לנו את הלילה."
+        </p>
         <a
           href="#form"
           style={{
-            fontSize: 12,
-            letterSpacing: 2,
+            background: 'transparent',
+            border: '1px solid rgba(201,168,76,0.35)',
             color: '#c9a84c',
+            padding: '11px 24px',
+            borderRadius: 2,
+            fontSize: 12,
+            fontWeight: 600,
+            letterSpacing: 2,
             textDecoration: 'none',
             whiteSpace: 'nowrap',
           }}
         >
-          בדקו אם התאריך שלכם פנוי ←
+          בדקו זמינות ←
         </a>
-        <div style={{ height: 1, flex: 1, background: 'rgba(201,168,76,0.15)' }} />
       </div>
     </section>
   )

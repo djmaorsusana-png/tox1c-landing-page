@@ -10,6 +10,12 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  const links = [
+    { label: 'THE EXPERIENCE', href: '#why' },
+    { label: 'HYBRID LIVE ACT', href: '#live-act' },
+    { label: 'THE VIBE', href: '#reviews' },
+  ]
+
   return (
     <nav
       style={{
@@ -29,7 +35,6 @@ export default function Navbar() {
         transition: 'all 0.3s ease',
       }}
     >
-      {/* Logo */}
       <a
         href="#"
         className="bebas"
@@ -38,35 +43,21 @@ export default function Navbar() {
         TOX<span style={{ color: '#c9a84c' }}>1</span>C
       </a>
 
-      {/* Desktop Links */}
-      <ul
-        style={{
-          display: 'flex',
-          gap: 36,
-          listStyle: 'none',
-          alignItems: 'center',
-        }}
-        className="max-md:hidden"
-      >
-        {[
-          { label: 'מה אנחנו', href: '#why' },
-          { label: 'איך זה עובד', href: '#how' },
-          { label: 'ביקורות', href: '#reviews' },
-        ].map((item) => (
+      <ul style={{ display: 'flex', gap: 36, listStyle: 'none', alignItems: 'center' }} className="max-md:hidden">
+        {links.map((item) => (
           <li key={item.href}>
             <a
               href={item.href}
+              className="bebas"
               style={{
-                color: 'rgba(240,237,232,0.55)',
+                color: 'rgba(240,237,232,0.5)',
                 textDecoration: 'none',
-                fontSize: 12,
-                letterSpacing: 2,
+                fontSize: 14,
+                letterSpacing: 3,
                 transition: 'color 0.2s',
               }}
               onMouseEnter={(e) => ((e.target as HTMLElement).style.color = '#c9a84c')}
-              onMouseLeave={(e) =>
-                ((e.target as HTMLElement).style.color = 'rgba(240,237,232,0.55)')
-              }
+              onMouseLeave={(e) => ((e.target as HTMLElement).style.color = 'rgba(240,237,232,0.5)')}
             >
               {item.label}
             </a>
@@ -74,45 +65,34 @@ export default function Navbar() {
         ))}
       </ul>
 
-      {/* CTA */}
       <a
         href="#form"
-        className="max-md:hidden"
+        className="bebas max-md:hidden"
         style={{
           background: '#c9a84c',
           color: '#06060a',
-          padding: '9px 22px',
+          padding: '9px 24px',
           borderRadius: 2,
-          fontSize: 12,
-          fontWeight: 700,
-          letterSpacing: 1.5,
+          fontSize: 14,
+          letterSpacing: 2,
           textDecoration: 'none',
           transition: 'opacity 0.2s',
         }}
         onMouseEnter={(e) => ((e.target as HTMLElement).style.opacity = '0.85')}
         onMouseLeave={(e) => ((e.target as HTMLElement).style.opacity = '1')}
       >
-        בדקו זמינות
+        CHECK AVAILABILITY
       </a>
 
-      {/* Mobile hamburger */}
       <button
         className="md:hidden"
         onClick={() => setMenuOpen(!menuOpen)}
-        style={{
-          background: 'none',
-          border: 'none',
-          color: '#f0ede8',
-          cursor: 'pointer',
-          fontSize: 22,
-          lineHeight: 1,
-        }}
+        style={{ background: 'none', border: 'none', color: '#f0ede8', cursor: 'pointer', fontSize: 22 }}
         aria-label="תפריט"
       >
         {menuOpen ? '✕' : '☰'}
       </button>
 
-      {/* Mobile menu */}
       {menuOpen && (
         <div
           style={{
@@ -128,21 +108,13 @@ export default function Navbar() {
             gap: 20,
           }}
         >
-          {[
-            { label: 'מה אנחנו', href: '#why' },
-            { label: 'איך זה עובד', href: '#how' },
-            { label: 'ביקורות', href: '#reviews' },
-          ].map((item) => (
+          {links.map((item) => (
             <a
               key={item.href}
               href={item.href}
               onClick={() => setMenuOpen(false)}
-              style={{
-                color: 'rgba(240,237,232,0.7)',
-                textDecoration: 'none',
-                fontSize: 14,
-                letterSpacing: 2,
-              }}
+              className="bebas"
+              style={{ color: 'rgba(240,237,232,0.7)', textDecoration: 'none', fontSize: 16, letterSpacing: 3 }}
             >
               {item.label}
             </a>
@@ -150,19 +122,19 @@ export default function Navbar() {
           <a
             href="#form"
             onClick={() => setMenuOpen(false)}
+            className="bebas"
             style={{
               background: '#c9a84c',
               color: '#06060a',
               padding: '12px 24px',
               borderRadius: 2,
-              fontSize: 13,
-              fontWeight: 700,
-              letterSpacing: 1.5,
+              fontSize: 14,
+              letterSpacing: 2,
               textDecoration: 'none',
               textAlign: 'center',
             }}
           >
-            בדקו זמינות עכשיו
+            CHECK AVAILABILITY
           </a>
         </div>
       )}

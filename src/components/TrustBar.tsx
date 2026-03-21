@@ -1,8 +1,8 @@
 const stats = [
-  { number: 'מאות+', label: 'אירועים' },
-  { number: '100%', label: 'ביקורות 5 כוכבים' },
-  { number: '2', label: 'DJ על הבמה, תמיד' },
-  { number: 'LIVE', label: 'SET בכל אירוע' },
+  { number: '200+', label: 'COUPLES' },
+  { number: '100%', label: '5-STAR REVIEWS' },
+  { number: '2', label: 'ALWAYS ON STAGE' },
+  { number: 'LIVE', label: 'SET — EVERY SHOW' },
 ]
 
 export default function TrustBar() {
@@ -39,13 +39,13 @@ export default function TrustBar() {
             {stat.number}
           </div>
           <div
+            className="bebas"
             style={{
               fontSize: 10,
-              letterSpacing: 2.5,
-              color: 'rgba(240,237,232,0.35)',
+              letterSpacing: 3,
+              color: 'rgba(240,237,232,0.3)',
               marginTop: 7,
               fontWeight: 400,
-              textTransform: 'uppercase',
             }}
           >
             {stat.label}

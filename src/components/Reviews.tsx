@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react'
 
 const heroQuote = {
   text: 'התחתנו לפני 3 שנים ועד היום כל מי שמתחתן שואל אותנו מי היו הדיג\'ייים שלנו. פשוט רמה בינלאומית.',
-  author: 'זוג מרוצה',
   date: '3 שנים אחרי · מאומת',
 }
 
@@ -44,11 +43,7 @@ export default function Reviews() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add('visible')
-        })
-      },
+      (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add('visible')),
       { threshold: 0.08 }
     )
     ref.current?.querySelectorAll('.reveal').forEach((el) => observer.observe(el))
@@ -60,46 +55,63 @@ export default function Reviews() {
       id="reviews"
       ref={ref}
       style={{
-        background: '#06060a',
-        padding: 'clamp(64px, 8vw, 120px) 48px',
+        background: '#111116',
+        padding: 'clamp(72px, 9vw, 128px) 48px',
       }}
     >
       {/* Header */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 64, flexWrap: 'wrap', gap: 16 }}>
-        <div>
-          <span className="eyebrow" style={{ marginBottom: 12, display: 'block' }}>
-            // זוגות מדברים
-          </span>
-          <h2 className="bebas" dir="ltr" style={{ fontSize: 'clamp(36px, 5vw, 64px)', lineHeight: 1, letterSpacing: '0.02em' }}>
-            REAL <span style={{ color: '#c9a84c' }}>REACTIONS.</span>
-          </h2>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'rgba(240,237,232,0.4)', fontSize: 12, letterSpacing: 1.5 }}>
-          <span style={{ color: '#c9a84c' }}>★★★★★</span>
-          <span>ביקורות מאומתות · mit4mit.co.il</span>
-        </div>
+      <div style={{ marginBottom: 64 }}>
+        <span className="eyebrow" style={{ marginBottom: 16, display: 'block' }}>
+          // social proof
+        </span>
+        <h2
+          className="bebas"
+          dir="ltr"
+          style={{
+            fontSize: 'clamp(56px, 9vw, 120px)',
+            lineHeight: 0.88,
+            letterSpacing: '0.02em',
+            color: '#f0ede8',
+            marginBottom: 20,
+          }}
+        >
+          THE <span style={{ color: '#c9a84c' }}>VIBE.</span>
+        </h2>
+        <p
+          style={{
+            fontSize: 15,
+            color: 'rgba(240,237,232,0.45)',
+            lineHeight: 1.7,
+            maxWidth: 500,
+          }}
+        >
+          הקהל מצביע ברגליים.
+          <br />
+          <strong style={{ color: 'rgba(240,237,232,0.65)', fontWeight: 600 }}>
+            למעלה מ-200 זוגות שכבר חוו את הטירוף.
+          </strong>
+        </p>
       </div>
 
       {/* Hero quote */}
       <div
         className="reveal"
         style={{
-          background: '#111116',
+          background: '#06060a',
           border: '1px solid rgba(201,168,76,0.2)',
-          padding: 'clamp(36px, 5vw, 56px)',
-          marginBottom: 48,
+          padding: 'clamp(36px, 5vw, 60px)',
+          marginBottom: 2,
           position: 'relative',
           overflow: 'hidden',
         }}
       >
-        {/* Background large quote mark */}
         <div
           className="bebas"
           style={{
             position: 'absolute',
-            top: -20,
-            right: 32,
-            fontSize: 200,
+            top: -30,
+            right: 28,
+            fontSize: 220,
             color: 'rgba(201,168,76,0.04)',
             lineHeight: 1,
             userSelect: 'none',
@@ -109,39 +121,40 @@ export default function Reviews() {
         </div>
 
         <div style={{ position: 'relative', zIndex: 1 }}>
-          <div style={{ display: 'flex', gap: 4, marginBottom: 24 }}>
+          <div style={{ display: 'flex', gap: 3, marginBottom: 28 }}>
             {[...Array(5)].map((_, i) => (
-              <span key={i} style={{ color: '#c9a84c', fontSize: 18 }}>★</span>
+              <span key={i} style={{ color: '#c9a84c', fontSize: 20 }}>★</span>
             ))}
           </div>
           <blockquote
             style={{
-              fontSize: 'clamp(18px, 2.5vw, 26px)',
+              fontSize: 'clamp(19px, 2.8vw, 28px)',
               lineHeight: 1.55,
               color: '#f0ede8',
               fontWeight: 300,
-              marginBottom: 28,
+              marginBottom: 32,
             }}
           >
             "{heroQuote.text}"
           </blockquote>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 8 }}>
-            <span style={{ fontSize: 13, color: '#c9a84c', fontWeight: 600, letterSpacing: 1 }}>
-              {heroQuote.author}
+            <span style={{ fontSize: 11, color: '#c9a84c', fontWeight: 700, letterSpacing: 2 }}>
+              ✓ VERIFIED COUPLE
             </span>
-            <span style={{ fontSize: 12, color: 'rgba(240,237,232,0.35)', letterSpacing: 1 }}>
+            <span style={{ fontSize: 11, color: 'rgba(240,237,232,0.3)', letterSpacing: 1 }}>
               {heroQuote.date}
             </span>
           </div>
         </div>
       </div>
 
-      {/* Grid of reviews */}
+      {/* Grid */}
       <div
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
           gap: 2,
+          marginBottom: 2,
         }}
       >
         {reviews.map((r, i) => (
@@ -149,20 +162,15 @@ export default function Reviews() {
             key={i}
             className="reveal"
             style={{
-              background: '#111116',
+              background: '#06060a',
               padding: '32px 28px',
               display: 'flex',
               flexDirection: 'column',
-              gap: 16,
+              gap: 14,
               transition: 'background 0.25s',
-              borderTop: '1px solid rgba(240,237,232,0.04)',
             }}
-            onMouseEnter={(e) =>
-              ((e.currentTarget as HTMLElement).style.background = '#1a1a20')
-            }
-            onMouseLeave={(e) =>
-              ((e.currentTarget as HTMLElement).style.background = '#111116')
-            }
+            onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.background = '#0f0f14')}
+            onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.background = '#06060a')}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <div>
@@ -170,12 +178,12 @@ export default function Reviews() {
                   <span key={j} style={{ color: '#c9a84c', fontSize: 12 }}>★</span>
                 ))}
               </div>
-              <span style={{ fontSize: 10, color: '#c9a84c', letterSpacing: 1, fontWeight: 600 }}>
-                מאומת ✓
+              <span style={{ fontSize: 9, color: '#c9a84c', letterSpacing: 1.5, fontWeight: 700 }}>
+                VERIFIED ✓
               </span>
             </div>
 
-            <p style={{ fontSize: 14, lineHeight: 1.75, color: 'rgba(240,237,232,0.7)', flex: 1 }}>
+            <p style={{ fontSize: 14, lineHeight: 1.8, color: 'rgba(240,237,232,0.68)', flex: 1 }}>
               "{r.text}"
             </p>
 
@@ -184,14 +192,14 @@ export default function Reviews() {
                 borderTop: '1px solid rgba(240,237,232,0.06)',
                 paddingTop: 14,
                 fontSize: 12,
-                color: 'rgba(201,168,76,0.7)',
+                color: 'rgba(201,168,76,0.65)',
                 fontStyle: 'italic',
               }}
             >
               {r.tip}
             </div>
 
-            <span style={{ fontSize: 11, color: 'rgba(240,237,232,0.25)', letterSpacing: 1 }}>
+            <span style={{ fontSize: 10, color: 'rgba(240,237,232,0.22)', letterSpacing: 1.5 }}>
               {r.date}
             </span>
           </div>
@@ -201,12 +209,9 @@ export default function Reviews() {
       {/* Mit4mit badge */}
       <div
         style={{
-          marginTop: 48,
-          textAlign: 'center',
-          padding: '20px',
+          padding: '22px',
           border: '1px solid rgba(201,168,76,0.1)',
-          display: 'inline-block',
-          width: '100%',
+          textAlign: 'center',
         }}
       >
         <a
@@ -214,9 +219,9 @@ export default function Reviews() {
           target="_blank"
           rel="noopener noreferrer"
           style={{
-            fontSize: 12,
-            letterSpacing: 2,
-            color: 'rgba(240,237,232,0.4)',
+            fontSize: 11,
+            letterSpacing: 2.5,
+            color: 'rgba(240,237,232,0.35)',
             textDecoration: 'none',
           }}
         >

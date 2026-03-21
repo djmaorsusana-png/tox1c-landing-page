@@ -1,14 +1,4 @@
-import { useEffect, useRef } from 'react'
-
 export default function Hero() {
-  const videoRef = useRef<HTMLVideoElement>(null)
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 1
-    }
-  }, [])
-
   return (
     <section
       style={{
@@ -20,16 +10,13 @@ export default function Hero() {
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: '100px 28px 52px',
+        background: '#f4f4f4',
       }}
     >
-      {/* Video background */}
-      <video
-        ref={videoRef}
-        autoPlay
-        loop
-        muted
-        playsInline
-        poster="https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/images/hero.jpg"
+      {/* Silhouette image */}
+      <img
+        src="https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/hero-silhouette.jpg.jpg"
+        alt="TOX1C — Maor & Ofek"
         style={{
           position: 'absolute',
           inset: 0,
@@ -37,35 +24,29 @@ export default function Hero() {
           height: '100%',
           objectFit: 'cover',
           objectPosition: 'center',
-          filter: 'brightness(0.8) blur(0.4px)',
-          willChange: 'transform',
-          backfaceVisibility: 'hidden',
         }}
-      >
-        <source src="https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/videos/hero.mov" type="video/mp4" />
-      </video>
+      />
 
-      {/* Gradient — bottom heavy */}
+      {/* Subtle gradient at bottom so CTA stays readable */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
           background:
-            'linear-gradient(to bottom, rgba(6,6,10,0.1) 0%, rgba(6,6,10,0.4) 40%, rgba(6,6,10,0.96) 100%)',
+            'linear-gradient(to bottom, rgba(244,244,244,0.1) 0%, rgba(244,244,244,0.05) 50%, rgba(244,244,244,0.75) 85%, rgba(244,244,244,1) 100%)',
         }}
       />
 
       {/* Content */}
       <div style={{ position: 'relative', zIndex: 1, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 
-        {/* Headline — English, bold */}
         <h1
           className="bebas"
           style={{
             fontSize: 'clamp(52px, 14vw, 96px)',
             fontWeight: 400,
             lineHeight: 0.95,
-            color: '#c9a84c',
+            color: '#0a0a0a',
             letterSpacing: '0.02em',
             marginBottom: 20,
             direction: 'ltr',
@@ -73,24 +54,23 @@ export default function Hero() {
         >
           IT'S A RAVE
           <br />
-          IN A <span style={{ color: '#ffffff' }}>WHITE</span>
+          IN A <span style={{ WebkitTextStroke: '2px #0a0a0a', color: 'transparent' }}>WHITE</span>
           <br />
           DRESS.
         </h1>
 
-        {/* Sub */}
         <p
           style={{
             fontSize: 15,
             lineHeight: 1.7,
-            color: 'rgba(240,237,232,0.58)',
+            color: 'rgba(10,10,10,0.5)',
             marginBottom: 32,
             maxWidth: 420,
           }}
         >
           מהבמות של טומורולנד ועד לסצנה של ברזיל, דובאי ויפן -
           <br />
-          <span style={{ color: '#c9a84c' }}>טוקסיק</span> מביאים את הסטנדרט הבינלאומי הזה ישירות לאירוע שלכם.
+          <span style={{ color: '#0a0a0a', fontWeight: 600 }}>טוקסיק</span> מביאים את הסטנדרט הבינלאומי הזה ישירות לאירוע שלכם.
         </p>
 
       </div>
@@ -101,8 +81,8 @@ export default function Hero() {
         style={{
           position: 'relative',
           zIndex: 1,
-          background: '#c9a84c',
-          color: '#06060a',
+          background: '#0a0a0a',
+          color: '#ffffff',
           padding: '15px 32px',
           borderRadius: 3,
           fontSize: 14,
@@ -114,7 +94,7 @@ export default function Hero() {
         CHECK AVAILABILITY →
       </a>
 
-      {/* Bottom gold line */}
+      {/* Bottom line */}
       <div
         style={{
           position: 'absolute',
@@ -123,7 +103,7 @@ export default function Hero() {
           right: 0,
           height: 1,
           background:
-            'linear-gradient(to left, transparent, rgba(201,168,76,0.5), transparent)',
+            'linear-gradient(to left, transparent, rgba(10,10,10,0.15), transparent)',
         }}
       />
     </section>

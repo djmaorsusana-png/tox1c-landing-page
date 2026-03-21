@@ -50,7 +50,7 @@ export default function ReviewsCarousel() {
   function next() { scrollTo(Math.min(reviews.length - 1, current + 1)) }
 
   return (
-    <section style={{ background: '#0d0d11', padding: '56px 0 48px' }}>
+    <section style={{ background: '#f5f5f5', padding: '56px 0 48px' }}>
 
       {/* Hero quote */}
       <div
@@ -75,7 +75,7 @@ export default function ReviewsCarousel() {
           <span style={{
             fontSize: 80,
             lineHeight: 0,
-            color: 'rgba(201,168,76,0.15)',
+            color: 'rgba(10,10,10,0.08)',
             fontFamily: 'Georgia, serif',
             position: 'absolute',
             top: 10,
@@ -86,7 +86,7 @@ export default function ReviewsCarousel() {
             style={{
               fontSize: 'clamp(16px, 4vw, 21px)',
               lineHeight: 1.65,
-              color: '#f0ede8',
+              color: '#0a0a0a',
               fontWeight: 600,
               marginBottom: 20,
               position: 'relative',
@@ -103,16 +103,16 @@ export default function ReviewsCarousel() {
           display: 'inline-flex',
           alignItems: 'center',
           gap: 10,
-          background: 'rgba(201,168,76,0.07)',
-          border: '1px solid rgba(201,168,76,0.2)',
+          background: 'rgba(0,0,0,0.04)',
+          border: '1px solid rgba(0,0,0,0.1)',
           borderRadius: 100,
           padding: '8px 16px',
         }}>
-          <span style={{ fontSize: 12, color: '#c9a84c', fontWeight: 700 }}>{heroQuote.name}</span>
-          <span style={{ width: 1, height: 10, background: 'rgba(255,255,255,0.15)' }} />
-          <span style={{ fontSize: 11, color: 'rgba(240,237,232,0.4)', letterSpacing: 1 }}>{heroQuote.date}</span>
-          <span style={{ width: 1, height: 10, background: 'rgba(255,255,255,0.15)' }} />
-          <span style={{ fontSize: 10, color: 'rgba(201,168,76,0.6)', letterSpacing: 1 }}>✓ מאומת</span>
+          <span style={{ fontSize: 12, color: '#0a0a0a', fontWeight: 700 }}>{heroQuote.name}</span>
+          <span style={{ width: 1, height: 10, background: 'rgba(0,0,0,0.15)' }} />
+          <span style={{ fontSize: 11, color: 'rgba(10,10,10,0.4)', letterSpacing: 1 }}>{heroQuote.date}</span>
+          <span style={{ width: 1, height: 10, background: 'rgba(0,0,0,0.15)' }} />
+          <span style={{ fontSize: 10, color: '#c9a84c', letterSpacing: 1 }}>✓ מאומת</span>
         </div>
       </div>
 
@@ -124,11 +124,11 @@ export default function ReviewsCarousel() {
           alignItems: 'center',
           padding: '0 24px',
           marginBottom: 20,
-          borderTop: '1px solid rgba(255,255,255,0.05)',
+          borderTop: '1px solid rgba(0,0,0,0.06)',
           paddingTop: 32,
         }}
       >
-        <span style={{ fontSize: 10, letterSpacing: 3, color: 'rgba(240,237,232,0.25)', fontWeight: 500 }}>
+        <span style={{ fontSize: 10, letterSpacing: 3, color: 'rgba(10,10,10,0.3)', fontWeight: 500 }}>
           עוד זוגות מספרים
         </span>
         <div style={{ display: 'flex', gap: 8 }}>
@@ -158,8 +158,8 @@ export default function ReviewsCarousel() {
               flexShrink: 0,
               width: 'min(80vw, 300px)',
               scrollSnapAlign: 'start',
-              background: 'rgba(255,255,255,0.03)',
-              border: `1px solid ${i === current ? 'rgba(201,168,76,0.4)' : 'rgba(255,255,255,0.07)'}`,
+              background: '#ffffff',
+              border: `1px solid ${i === current ? 'rgba(0,0,0,0.25)' : 'rgba(0,0,0,0.08)'}`,
               borderRadius: 6,
               padding: '22px 20px',
               display: 'flex',
@@ -169,12 +169,12 @@ export default function ReviewsCarousel() {
             }}
           >
             <span style={{ color: '#c9a84c', fontSize: 13, letterSpacing: 3 }}>★★★★★</span>
-            <p style={{ fontSize: 14, lineHeight: 1.75, color: 'rgba(240,237,232,0.75)', margin: 0, flex: 1 }}>
+            <p style={{ fontSize: 14, lineHeight: 1.75, color: 'rgba(10,10,10,0.6)', margin: 0, flex: 1 }}>
               {r.text}
             </p>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontSize: 11, color: 'rgba(240,237,232,0.5)', fontWeight: 600 }}>{r.name}</span>
-              <span style={{ fontSize: 10, letterSpacing: 1, color: 'rgba(240,237,232,0.2)' }}>{r.date} · מאומת</span>
+              <span style={{ fontSize: 11, color: '#0a0a0a', fontWeight: 600 }}>{r.name}</span>
+              <span style={{ fontSize: 10, letterSpacing: 1, color: 'rgba(10,10,10,0.25)' }}>{r.date} · מאומת</span>
             </div>
           </div>
         ))}
@@ -191,7 +191,7 @@ export default function ReviewsCarousel() {
               height: 6,
               borderRadius: 3,
               border: 'none',
-              background: i === current ? '#c9a84c' : 'rgba(240,237,232,0.2)',
+              background: i === current ? '#0a0a0a' : 'rgba(10,10,10,0.15)',
               cursor: 'pointer',
               padding: 0,
               transition: 'all 0.3s ease',
@@ -209,9 +209,9 @@ export default function ReviewsCarousel() {
           style={{
             fontSize: 12,
             letterSpacing: 2,
-            color: 'rgba(240,237,232,0.35)',
+            color: 'rgba(10,10,10,0.35)',
             textDecoration: 'none',
-            borderBottom: '1px solid rgba(240,237,232,0.15)',
+            borderBottom: '1px solid rgba(10,10,10,0.15)',
             paddingBottom: 2,
           }}
         >
@@ -226,9 +226,9 @@ const btnStyle: React.CSSProperties = {
   width: 32,
   height: 32,
   borderRadius: '50%',
-  border: '1px solid rgba(255,255,255,0.15)',
-  background: 'rgba(255,255,255,0.05)',
-  color: '#f0ede8',
+  border: '1px solid rgba(0,0,0,0.15)',
+  background: '#ffffff',
+  color: '#0a0a0a',
   fontSize: 18,
   cursor: 'pointer',
   display: 'flex',

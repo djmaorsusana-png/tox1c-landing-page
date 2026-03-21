@@ -62,7 +62,7 @@ function ReceptionVideoCarousel() {
         style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(to top, rgba(6,6,10,0.7) 0%, transparent 60%)',
+          background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%)',
         }}
       />
       <div style={{ position: 'absolute', bottom: 10, left: 0, right: 0, display: 'flex', justifyContent: 'center', gap: 6 }}>
@@ -75,7 +75,7 @@ function ReceptionVideoCarousel() {
               height: 5,
               borderRadius: 3,
               border: 'none',
-              background: i === current ? '#c9a84c' : 'rgba(255,255,255,0.4)',
+              background: i === current ? '#ffffff' : 'rgba(255,255,255,0.4)',
               cursor: 'pointer',
               padding: 0,
               transition: 'all 0.3s ease',
@@ -89,21 +89,21 @@ function ReceptionVideoCarousel() {
 
 export default function ReceptionSection() {
   return (
-    <section style={{ background: '#0d0d11', padding: '56px 28px' }}>
+    <section style={{ background: '#ffffff', padding: '56px 28px' }}>
       <div style={{ width: '100%', maxWidth: 440, margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: 28 }}>
           <span style={{ fontSize: 11, letterSpacing: 4, color: '#c9a84c', fontWeight: 500, display: 'block', marginBottom: 12 }}>
             // THE LIVE RECEPTION
           </span>
-          <h2 className="bebas" style={{ fontSize: 'clamp(32px, 9vw, 52px)', color: '#f0ede8', lineHeight: 1, letterSpacing: '0.03em', margin: 0 }}>
+          <h2 className="bebas" style={{ fontSize: 'clamp(32px, 9vw, 52px)', color: '#0a0a0a', lineHeight: 1, letterSpacing: '0.03em', margin: 0 }}>
             קבלת פנים{' '}
-            <span style={{ color: '#c9a84c' }}>אחרת.</span>
+            <span style={{ WebkitTextStroke: '1.5px #0a0a0a', color: 'transparent' }}>אחרת.</span>
           </h2>
         </div>
         <div
           style={{
-            background: 'rgba(201,168,76,0.06)',
-            border: '1px solid rgba(201,168,76,0.25)',
+            background: '#f5f5f5',
+            border: '1px solid rgba(0,0,0,0.1)',
             borderRadius: 6,
             overflow: 'hidden',
           }}
@@ -126,7 +126,7 @@ export default function ReceptionSection() {
               style={{
                 fontSize: 13,
                 lineHeight: 1.75,
-                color: 'rgba(240,237,232,0.5)',
+                color: 'rgba(10,10,10,0.5)',
                 margin: 0,
                 marginBottom: 16,
               }}
@@ -143,14 +143,14 @@ export default function ReceptionSection() {
                 alignItems: 'flex-start',
                 gap: 8,
                 padding: '10px 14px',
-                background: 'rgba(201,168,76,0.07)',
-                border: '1px dashed rgba(201,168,76,0.3)',
+                background: 'rgba(0,0,0,0.03)',
+                border: '1px dashed rgba(0,0,0,0.15)',
                 borderRadius: 4,
               }}
             >
               <span
                 style={{
-                  color: '#c9a84c',
+                  color: '#0a0a0a',
                   fontSize: 14,
                   fontWeight: 700,
                   lineHeight: 1.4,
@@ -164,13 +164,13 @@ export default function ReceptionSection() {
                 style={{
                   fontSize: 12,
                   lineHeight: 1.65,
-                  color: 'rgba(240,237,232,0.45)',
+                  color: 'rgba(10,10,10,0.45)',
                   margin: 0,
                   direction: 'rtl',
                 }}
               >
                 ניתן לסגור{' '}
-                <span style={{ color: '#c9a84c', fontWeight: 600 }}>קבלת פנים בלבד</span>
+                <span style={{ color: '#0a0a0a', fontWeight: 600 }}>קבלת פנים בלבד</span>
                 {' '}בכפוף לתאריך פנוי.
                 <br />
                 שלחו לנו הודעת ווצאפ ונדבר.
@@ -182,4 +182,3 @@ export default function ReceptionSection() {
     </section>
   )
 }
-

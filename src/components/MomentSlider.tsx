@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 
 const slides = [
-  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/images/portrait-dark.jpg', pos: 'center top', label: 'MAOR & OFEK'   },
+  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/ADI_7653.jpg',          pos: 'center top', label: 'MAOR & OFEK'   },
   { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/images/wedding-stage.jpg', pos: 'center 30%', label: 'WEDDING NIGHT' },
   { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/images/crowd-day.jpg',     pos: 'center',     label: 'THE CROWD'     },
   { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/images/dj-decks.jpg',      pos: 'center 30%', label: 'THE DECKS'     },
@@ -23,7 +23,7 @@ export default function MomentSlider() {
   }, [paused, next])
 
   return (
-    <section style={{ background: '#06060a', paddingTop: 64 }}>
+    <section style={{ background: '#f5f5f5', paddingTop: 64 }}>
       {/* Eyebrow */}
       <div style={{ textAlign: 'center', marginBottom: 28 }}>
         <span style={{ fontSize: 11, letterSpacing: 4, color: '#c9a84c', fontWeight: 500 }}>
@@ -59,7 +59,7 @@ export default function MomentSlider() {
           style={{
             position: 'absolute',
             inset: 0,
-            background: 'linear-gradient(to top, rgba(6,6,10,0.7) 0%, transparent 40%)',
+            background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 40%)',
           }}
         />
 
@@ -71,7 +71,7 @@ export default function MomentSlider() {
             left: 24,
             fontSize: 9,
             letterSpacing: 4,
-            color: 'rgba(201,168,76,0.85)',
+            color: 'rgba(255,255,255,0.7)',
             fontWeight: 500,
           }}
         >
@@ -116,7 +116,7 @@ export default function MomentSlider() {
                 height: 6,
                 borderRadius: 3,
                 border: 'none',
-                background: i === current ? '#c9a84c' : 'rgba(240,237,232,0.3)',
+                background: i === current ? '#ffffff' : 'rgba(255,255,255,0.35)',
                 cursor: 'pointer',
                 padding: 0,
                 transition: 'all 0.3s ease',
@@ -141,7 +141,7 @@ export default function MomentSlider() {
           style={{
             fontSize: 'clamp(36px, 9vw, 64px)',
             fontWeight: 400,
-            color: '#f0ede8',
+            color: '#0a0a0a',
             lineHeight: 1,
             letterSpacing: '0.03em',
             marginBottom: 20,
@@ -156,7 +156,7 @@ export default function MomentSlider() {
           style={{
             fontSize: 14,
             lineHeight: 1.8,
-            color: 'rgba(240,237,232,0.45)',
+            color: 'rgba(10,10,10,0.45)',
           }}
         >
           האירועים שלנו דורשים אנרגיה פסיכית ודיוק מקסימלי.
@@ -169,9 +169,9 @@ export default function MomentSlider() {
             marginTop: 28,
             fontSize: 12,
             letterSpacing: 2,
-            color: '#c9a84c',
+            color: '#0a0a0a',
             textDecoration: 'none',
-            borderBottom: '1px solid rgba(201,168,76,0.4)',
+            borderBottom: '1px solid rgba(10,10,10,0.3)',
             paddingBottom: 2,
           }}
         >
@@ -188,9 +188,9 @@ function arrowStyle(side: 'left' | 'right'): React.CSSProperties {
     top: '50%',
     [side]: 16,
     transform: 'translateY(-50%)',
-    background: 'rgba(6,6,10,0.55)',
-    border: '1px solid rgba(255,255,255,0.15)',
-    color: '#f0ede8',
+    background: 'rgba(255,255,255,0.75)',
+    border: '1px solid rgba(0,0,0,0.1)',
+    color: '#0a0a0a',
     width: 40,
     height: 40,
     borderRadius: '50%',

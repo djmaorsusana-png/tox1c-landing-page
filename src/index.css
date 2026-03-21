@@ -28,8 +28,8 @@ html {
 }
 
 body {
-  background: #06060a;
-  color: #f0ede8;
+  background: #ffffff;
+  color: #0a0a0a;
   font-family: "Noto Sans Hebrew", system-ui, sans-serif;
   direction: rtl;
   overflow-x: hidden;
@@ -54,10 +54,10 @@ body {
   width: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: #06060a;
+  background: #f0f0f0;
 }
 ::-webkit-scrollbar-thumb {
-  background: #c9a84c44;
+  background: rgba(10,10,10,0.2);
   border-radius: 2px;
 }
 

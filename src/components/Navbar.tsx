@@ -28,16 +28,16 @@ export default function Navbar() {
         alignItems: 'center',
         padding: '20px 48px',
         background: scrolled
-          ? 'rgba(6,6,10,0.97)'
-          : 'linear-gradient(to bottom, rgba(6,6,10,0.95) 60%, transparent)',
-        borderBottom: scrolled ? '1px solid rgba(201,168,76,0.1)' : 'none',
+          ? 'rgba(255,255,255,0.97)'
+          : 'linear-gradient(to bottom, rgba(244,244,244,0.9) 60%, transparent)',
+        borderBottom: scrolled ? '1px solid rgba(0,0,0,0.08)' : 'none',
         transition: 'all 0.3s ease',
       }}
     >
       <a
         href="#"
         className="bebas"
-        style={{ fontSize: 22, letterSpacing: 6, textDecoration: 'none', color: '#f0ede8' }}
+        style={{ fontSize: 22, letterSpacing: 6, textDecoration: 'none', color: '#0a0a0a' }}
       >
         TOX<span style={{ color: '#c9a84c' }}>1</span>C
       </a>
@@ -49,14 +49,14 @@ export default function Navbar() {
               href={item.href}
               className="bebas"
               style={{
-                color: 'rgba(240,237,232,0.5)',
+                color: 'rgba(10,10,10,0.45)',
                 textDecoration: 'none',
                 fontSize: 14,
                 letterSpacing: 3,
                 transition: 'color 0.2s',
               }}
-              onMouseEnter={(e) => ((e.target as HTMLElement).style.color = '#c9a84c')}
-              onMouseLeave={(e) => ((e.target as HTMLElement).style.color = 'rgba(240,237,232,0.5)')}
+              onMouseEnter={(e) => ((e.target as HTMLElement).style.color = '#0a0a0a')}
+              onMouseLeave={(e) => ((e.target as HTMLElement).style.color = 'rgba(10,10,10,0.45)')}
             >
               {item.label}
             </a>
@@ -68,8 +68,8 @@ export default function Navbar() {
         href="#form"
         className="bebas max-md:hidden"
         style={{
-          background: '#c9a84c',
-          color: '#06060a',
+          background: '#0a0a0a',
+          color: '#ffffff',
           padding: '9px 24px',
           borderRadius: 2,
           fontSize: 14,
@@ -77,7 +77,7 @@ export default function Navbar() {
           textDecoration: 'none',
           transition: 'opacity 0.2s',
         }}
-        onMouseEnter={(e) => ((e.target as HTMLElement).style.opacity = '0.85')}
+        onMouseEnter={(e) => ((e.target as HTMLElement).style.opacity = '0.75')}
         onMouseLeave={(e) => ((e.target as HTMLElement).style.opacity = '1')}
       >
         CHECK AVAILABILITY
@@ -86,7 +86,7 @@ export default function Navbar() {
       <button
         className="md:hidden"
         onClick={() => setMenuOpen(!menuOpen)}
-        style={{ background: 'none', border: 'none', color: '#f0ede8', cursor: 'pointer', fontSize: 22 }}
+        style={{ background: 'none', border: 'none', color: '#0a0a0a', cursor: 'pointer', fontSize: 22 }}
         aria-label="תפריט"
       >
         {menuOpen ? '✕' : '☰'}
@@ -99,8 +99,8 @@ export default function Navbar() {
             top: '100%',
             right: 0,
             left: 0,
-            background: 'rgba(6,6,10,0.98)',
-            borderTop: '1px solid rgba(201,168,76,0.15)',
+            background: 'rgba(255,255,255,0.98)',
+            borderTop: '1px solid rgba(0,0,0,0.08)',
             padding: '24px',
             display: 'flex',
             flexDirection: 'column',
@@ -113,7 +113,7 @@ export default function Navbar() {
               href={item.href}
               onClick={() => setMenuOpen(false)}
               className="bebas"
-              style={{ color: 'rgba(240,237,232,0.7)', textDecoration: 'none', fontSize: 16, letterSpacing: 3 }}
+              style={{ color: 'rgba(10,10,10,0.7)', textDecoration: 'none', fontSize: 16, letterSpacing: 3 }}
             >
               {item.label}
             </a>
@@ -123,8 +123,8 @@ export default function Navbar() {
             onClick={() => setMenuOpen(false)}
             className="bebas"
             style={{
-              background: '#c9a84c',
-              color: '#06060a',
+              background: '#0a0a0a',
+              color: '#ffffff',
               padding: '12px 24px',
               borderRadius: 2,
               fontSize: 14,

@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 
 const RECEPTION_VIDEOS = [
+  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/C3292.mov',             ratio: '9/16' },
   { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/videos/reception2.mp4', ratio: '9/16' },
   { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/videos/reception3.mp4', ratio: '16/9' },
   { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/videos/reception.mp4',  ratio: '16/9' },
@@ -23,8 +24,14 @@ function ReceptionVideoCarousel() {
   }, [])
 
   useEffect(() => {
-    videoRef.current?.load()
-    videoRef.current?.play().catch(() => {})
+    const vid = videoRef.current
+    if (!vid) return
+    vid.load()
+    vid.oncanplay = () => {
+      if (current === 0) vid.currentTime = 3
+      vid.play().catch(() => {})
+      vid.oncanplay = null
+    }
   }, [current])
 
   const video = RECEPTION_VIDEOS[current]

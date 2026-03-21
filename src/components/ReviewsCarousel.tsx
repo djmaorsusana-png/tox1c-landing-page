@@ -65,9 +65,19 @@ export default function ReviewsCarousel() {
           // מה הזוגות אומרים
         </span>
 
-        {/* Stars */}
-        <div style={{ marginBottom: 20 }}>
-          <span style={{ color: '#c9a84c', fontSize: 18, letterSpacing: 4 }}>★★★★★</span>
+        {/* Rating badge */}
+        <div style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: 10,
+          background: '#0a0a0a',
+          borderRadius: 100,
+          padding: '8px 20px',
+          marginBottom: 28,
+        }}>
+          <span style={{ color: '#c9a84c', fontSize: 13, letterSpacing: 2 }}>★★★★★</span>
+          <span style={{ width: 1, height: 12, background: 'rgba(255,255,255,0.15)' }} />
+          <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.8)', letterSpacing: 1 }}>5.0 · 87 ביקורות</span>
         </div>
 
         {/* Quote marks */}
@@ -84,7 +94,7 @@ export default function ReviewsCarousel() {
           }}>"</span>
           <p
             style={{
-              fontSize: 'clamp(16px, 4vw, 21px)',
+              fontSize: 'clamp(17px, 4.5vw, 22px)',
               lineHeight: 1.65,
               color: '#0a0a0a',
               fontWeight: 600,
@@ -200,8 +210,8 @@ export default function ReviewsCarousel() {
         ))}
       </div>
 
-      {/* Link to real reviews */}
-      <div style={{ textAlign: 'center', marginTop: 28 }}>
+      {/* Link to real reviews + Wikipedia */}
+      <div style={{ textAlign: 'center', marginTop: 28, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
         <a
           href="https://www.mit4mit.co.il/biz/103387"
           target="_blank"
@@ -216,6 +226,38 @@ export default function ReviewsCarousel() {
           }}
         >
           לכל הביקורות האמיתיות ב-mit4mit ←
+        </a>
+
+        <a
+          href="https://he.wikipedia.org/wiki/TOX1C"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 10,
+            textDecoration: 'none',
+            background: '#f0f0f0',
+            border: '1px solid rgba(0,0,0,0.1)',
+            borderRadius: 100,
+            padding: '6px 14px 6px 8px',
+          }}
+        >
+          <span style={{
+            width: 20,
+            height: 20,
+            borderRadius: '50%',
+            background: '#888888',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: 11,
+            fontWeight: 700,
+            color: '#ffffff',
+            flexShrink: 0,
+            fontFamily: 'Georgia, serif',
+          }}>W</span>
+          <span style={{ fontSize: 11, color: 'rgba(10,10,10,0.5)', fontWeight: 500 }}>רוצים לדעת עלינו עוד?</span>
         </a>
       </div>
     </section>

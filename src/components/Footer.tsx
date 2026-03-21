@@ -8,8 +8,8 @@ export default function Footer() {
   return (
     <footer
       style={{
-        background: '#0a0a0a',
-        borderTop: '1px solid rgba(255,255,255,0.06)',
+        background: '#f5f5f5',
+        borderTop: '1px solid rgba(0,0,0,0.08)',
         padding: '40px 48px',
         display: 'flex',
         justifyContent: 'space-between',
@@ -21,7 +21,7 @@ export default function Footer() {
       {/* Logo */}
       <span
         className="bebas"
-        style={{ fontSize: 20, letterSpacing: 6, color: '#ffffff' }}
+        style={{ fontSize: 20, letterSpacing: 6, color: '#0a0a0a' }}
       >
         TOX<span style={{ color: '#c9a84c' }}>1</span>C
       </span>
@@ -35,15 +35,15 @@ export default function Footer() {
             target={l.href.startsWith('http') ? '_blank' : undefined}
             rel="noopener noreferrer"
             style={{
-              color: 'rgba(255,255,255,0.3)',
+              color: 'rgba(10,10,10,0.35)',
               textDecoration: 'none',
               fontSize: 11,
               letterSpacing: 2,
               transition: 'color 0.2s',
             }}
-            onMouseEnter={(e) => ((e.target as HTMLElement).style.color = '#ffffff')}
+            onMouseEnter={(e) => ((e.target as HTMLElement).style.color = '#0a0a0a')}
             onMouseLeave={(e) =>
-              ((e.target as HTMLElement).style.color = 'rgba(255,255,255,0.3)')
+              ((e.target as HTMLElement).style.color = 'rgba(10,10,10,0.35)')
             }
           >
             {l.label}
@@ -52,7 +52,7 @@ export default function Footer() {
       </div>
 
       {/* Copyright */}
-      <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.15)', letterSpacing: 1.5 }}>
+      <span style={{ fontSize: 11, color: 'rgba(10,10,10,0.25)', letterSpacing: 1.5 }}>
         © 2026 TOX1C - MAOR & OFEK
       </span>
     </footer>

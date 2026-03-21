@@ -63,26 +63,29 @@ export default function SimpleContact() {
         <h2
           className="bebas"
           style={{
-            fontSize: 'clamp(36px, 9vw, 60px)',
+            fontSize: 'clamp(38px, 10vw, 64px)',
             color: '#0a0a0a',
             lineHeight: 1,
             letterSpacing: '0.03em',
             margin: 0,
           }}
         >
-          דברו איתנו.
+          התאריך שלכם
+          <br />
+          לא מחכה לאף אחד.
         </h2>
         <p
           style={{
-            fontSize: 14,
-            color: 'rgba(10,10,10,0.4)',
-            marginTop: 12,
+            fontSize: 15,
+            color: 'rgba(10,10,10,0.45)',
+            marginTop: 14,
             lineHeight: 1.7,
-            maxWidth: 360,
+            maxWidth: 340,
           }}
         >
-          השאירו פרטים, נבדוק זמינות ונחזור אליכם תוך 24 שעות.
+          השאירו פרטים ונחזור אליכם תוך 24 שעות עם תשובה.
         </p>
+
       </div>
 
       {/* Form */}
@@ -163,7 +166,7 @@ export default function SimpleContact() {
               marginTop: 4,
             }}
           >
-            {loading ? '...' : 'שלחו לנו ←'}
+            {loading ? '...' : 'שמרו את התאריך שלי ←'}
           </button>
         </form>
       )}

@@ -1,12 +1,24 @@
 import './index.css'
+import Navbar from './components/Navbar'
+import Hero from './components/Hero'
+import TrustBar from './components/TrustBar'
+import WhyUs from './components/WhyUs'
+import Process from './components/Process'
+import Reviews from './components/Reviews'
+import Booking from './components/Booking'
+import Footer from './components/Footer'
 
-function App() {
+export default function App() {
   return (
-    <main className="min-h-screen bg-black text-white flex flex-col items-center justify-center">
-      <h1 className="text-6xl font-bold tracking-widest">TOX1C</h1>
-      <p className="text-gray-400 mt-4 text-xl">DJ & Producer</p>
-    </main>
+    <>
+      <Navbar />
+      <Hero />
+      <TrustBar />
+      <WhyUs />
+      <Process />
+      <Reviews />
+      <Booking />
+      <Footer />
+    </>
   )
 }
-
-export default App

@@ -1,13 +1,70 @@
 @import "tailwindcss";
 
+@theme {
+  --color-gold: #c9a84c;
+  --color-sand: #e8d5a3;
+  --color-offwhite: #f0ede8;
+  --color-site-black: #06060a;
+  --color-gray1: #111116;
+  --color-gray2: #1a1a20;
+  --color-gray-mid: #222229;
+  --color-muted: #5a5a65;
+
+  --font-display: "Bebas Neue", sans-serif;
+  --font-body: "Noto Sans Hebrew", system-ui, sans-serif;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: system-ui, -apple-system, sans-serif;
-  background: #000;
-  color: #fff;
+  background: #06060a;
+  color: #f0ede8;
+  font-family: "Noto Sans Hebrew", system-ui, sans-serif;
+  direction: rtl;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Utility classes ─── */
+.bebas {
+  font-family: "Bebas Neue", sans-serif;
+}
+
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #c9a84c;
+  font-weight: 500;
+  display: block;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #06060a;
+}
+::-webkit-scrollbar-thumb {
+  background: #c9a84c44;
+  border-radius: 2px;
+}
+
+/* ─── Reveal animations ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
 }

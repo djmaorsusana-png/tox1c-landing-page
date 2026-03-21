@@ -61,23 +61,59 @@ export default function ReviewsCarousel() {
           textAlign: 'center',
         }}
       >
-        <span style={{ fontSize: 11, letterSpacing: 4, color: '#c9a84c', fontWeight: 500, display: 'block', marginBottom: 24 }}>
-          // 200+ COUPLES. ONE VERDICT.
+        <span style={{ fontSize: 11, letterSpacing: 4, color: '#c9a84c', fontWeight: 500, display: 'block', marginBottom: 16 }}>
+          // מה הזוגות אומרים
         </span>
-        <p
-          style={{
-            fontSize: 'clamp(18px, 4.5vw, 24px)',
-            lineHeight: 1.55,
-            color: '#f0ede8',
-            fontWeight: 700,
-            marginBottom: 16,
-          }}
-        >
-          "{heroQuote.text}"
-        </p>
-        <span style={{ fontSize: 11, letterSpacing: 2, color: 'rgba(240,237,232,0.3)' }}>
-          {heroQuote.name} · {heroQuote.date} · מאומת
-        </span>
+
+        {/* Stars */}
+        <div style={{ marginBottom: 20 }}>
+          <span style={{ color: '#c9a84c', fontSize: 18, letterSpacing: 4 }}>★★★★★</span>
+        </div>
+
+        {/* Quote marks */}
+        <div style={{ position: 'relative' }}>
+          <span style={{
+            fontSize: 80,
+            lineHeight: 0,
+            color: 'rgba(201,168,76,0.15)',
+            fontFamily: 'Georgia, serif',
+            position: 'absolute',
+            top: 10,
+            right: 0,
+            userSelect: 'none',
+          }}>"</span>
+          <p
+            style={{
+              fontSize: 'clamp(16px, 4vw, 21px)',
+              lineHeight: 1.65,
+              color: '#f0ede8',
+              fontWeight: 600,
+              marginBottom: 20,
+              position: 'relative',
+              zIndex: 1,
+              padding: '0 12px',
+            }}
+          >
+            {heroQuote.text}
+          </p>
+        </div>
+
+        {/* Attribution */}
+        <div style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: 10,
+          background: 'rgba(201,168,76,0.07)',
+          border: '1px solid rgba(201,168,76,0.2)',
+          borderRadius: 100,
+          padding: '8px 16px',
+        }}>
+          <span style={{ fontSize: 12, color: '#c9a84c', fontWeight: 700 }}>{heroQuote.name}</span>
+          <span style={{ width: 1, height: 10, background: 'rgba(255,255,255,0.15)' }} />
+          <span style={{ fontSize: 11, color: 'rgba(240,237,232,0.4)', letterSpacing: 1 }}>{heroQuote.date}</span>
+          <span style={{ width: 1, height: 10, background: 'rgba(255,255,255,0.15)' }} />
+          <span style={{ fontSize: 10, color: 'rgba(201,168,76,0.6)', letterSpacing: 1 }}>✓ מאומת</span>
+        </div>
       </div>
 
       {/* Carousel header */}

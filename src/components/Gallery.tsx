@@ -1,14 +1,14 @@
 // כל תמונה מופיעה פה פעם אחת בלבד
 // wedding-stage → Hero | drummer → LiveAct | festival → LiveAct | bw-duo → LiveAct
 const images = [
-  { src: '/images/dj-decks.jpg',       label: '// THE SET',         tall: true,  pos: 'center 30%' },
-  { src: '/images/the-port.jpg',       label: '// THE CROWD',       tall: false, pos: 'center'     },
-  { src: '/images/live-set.jpg',       label: '// LIVE PERFORMANCE',tall: false, pos: 'center'     },
-  { src: '/images/hero.jpg',           label: '// THE ATMOSPHERE',  tall: true,  pos: 'center 20%' },
-  { src: '/images/portrait-dark.jpg',  label: '// MAOR & OFEK',     tall: false, pos: 'center top' },
-  { src: '/images/crowd-day.jpg',      label: '// THE REACTION',    tall: false, pos: 'center'     },
-  { src: '/images/duo-day.jpg',        label: '// ON STAGE',        tall: false, pos: 'center top' },
-  { src: '/images/portrait-white.jpg', label: '// THE DUO',         tall: false, pos: 'center top' },
+  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/images/dj-decks.jpg',       label: '// THE SET',         tall: true,  pos: 'center 30%' },
+  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/images/the-port.jpg',       label: '// THE CROWD',       tall: false, pos: 'center'     },
+  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/images/live-set.jpg',       label: '// LIVE PERFORMANCE',tall: false, pos: 'center'     },
+  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/images/hero.jpg',           label: '// THE ATMOSPHERE',  tall: true,  pos: 'center 20%' },
+  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/images/portrait-dark.jpg',  label: '// MAOR & OFEK',     tall: false, pos: 'center top' },
+  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/images/crowd-day.jpg',      label: '// THE REACTION',    tall: false, pos: 'center'     },
+  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/images/duo-day.jpg',        label: '// ON STAGE',        tall: false, pos: 'center top' },
+  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/images/portrait-white.jpg', label: '// THE DUO',         tall: false, pos: 'center top' },
 ]
 
 export default function Gallery() {

@@ -3,13 +3,13 @@ import { useEffect, useRef } from 'react'
 const blocks = [
   {
     tag: 'HYBRID DRUMS',
-    img: '/images/drummer.jpg',
+    img: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/images/drummer.jpg',
     imgPosition: 'center 20%',
     text: 'סאונד אלקטרוני מוקפד שפוגש את האנרגיה הפיזית של תיפוף חי. הבייסליין מקבל ממד חדש שאי אפשר להתעלם ממנו.',
   },
   {
     tag: 'LIVE SYNTHS',
-    img: '/images/bw-duo.jpg',
+    img: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/images/bw-duo.jpg',
     imgPosition: 'center 25%',
     text: 'אלתור על סינתיסייזרים שמתאים את עצמו בדיוק לתדר של הרחבה. אף דרופ לא נשמע אותו הדבר פעמיים.',
   },

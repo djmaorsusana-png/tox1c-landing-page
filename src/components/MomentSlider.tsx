@@ -1,12 +1,12 @@
 import { useState, useEffect, useCallback } from 'react'
 
 const slides = [
-  { src: '/images/portrait-dark.jpg', pos: 'center top', label: 'MAOR & OFEK'   },
-  { src: '/images/wedding-stage.jpg', pos: 'center 30%', label: 'WEDDING NIGHT' },
-  { src: '/images/crowd-day.jpg',     pos: 'center',     label: 'THE CROWD'     },
-  { src: '/images/dj-decks.jpg',      pos: 'center 30%', label: 'THE DECKS'     },
-  { src: '/images/festival.jpg',      pos: 'center 20%', label: 'FESTIVAL MODE' },
-  { src: '/images/live-set.jpg',      pos: 'center',     label: 'LIVE ENERGY'   },
+  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/images/portrait-dark.jpg', pos: 'center top', label: 'MAOR & OFEK'   },
+  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/images/wedding-stage.jpg', pos: 'center 30%', label: 'WEDDING NIGHT' },
+  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/images/crowd-day.jpg',     pos: 'center',     label: 'THE CROWD'     },
+  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/images/dj-decks.jpg',      pos: 'center 30%', label: 'THE DECKS'     },
+  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/images/festival.jpg',      pos: 'center 20%', label: 'FESTIVAL MODE' },
+  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/images/live-set.jpg',      pos: 'center',     label: 'LIVE ENERGY'   },
 ]
 
 export default function MomentSlider() {

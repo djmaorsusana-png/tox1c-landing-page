@@ -41,7 +41,7 @@ export default function Hero() {
           backfaceVisibility: 'hidden',
         }}
       >
-        <source src="/videos/hero.mov" type="video/mp4" />
+        <source src="https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/videos/hero.mov" type="video/mp4" />
       </video>
 
       {/* Gradient — bottom heavy */}

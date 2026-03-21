@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 
 const RECEPTION_VIDEOS = [
-  { src: '/videos/reception2.mp4', ratio: '9/16' },
-  { src: '/videos/reception3.mp4', ratio: '16/9' },
-  { src: '/videos/reception.mp4',  ratio: '16/9' },
+  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/videos/reception2.mp4', ratio: '9/16' },
+  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/videos/reception3.mp4', ratio: '16/9' },
+  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/videos/reception.mp4',  ratio: '16/9' },
 ]
 
 function ReceptionVideoCarousel() {

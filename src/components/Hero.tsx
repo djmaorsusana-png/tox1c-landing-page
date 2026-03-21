@@ -65,7 +65,7 @@ export default function Hero() {
             fontSize: 'clamp(52px, 14vw, 96px)',
             fontWeight: 400,
             lineHeight: 0.95,
-            color: '#f0ede8',
+            color: '#c9a84c',
             letterSpacing: '0.02em',
             marginBottom: 20,
             direction: 'ltr',
@@ -73,9 +73,9 @@ export default function Hero() {
         >
           IT'S A RAVE
           <br />
-          IN A WHITE
+          IN A <span style={{ color: '#ffffff' }}>WHITE</span>
           <br />
-          <span style={{ color: '#c9a84c' }}>DRESS.</span>
+          DRESS.
         </h1>
 
         {/* Sub */}

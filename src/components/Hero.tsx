@@ -55,47 +55,8 @@ export default function Hero() {
         }}
       />
 
-      {/* Logo — top */}
-      <div
-        style={{
-          position: 'absolute',
-          top: 28,
-          right: 28,
-          left: 28,
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          zIndex: 1,
-        }}
-      >
-        <span
-          className="bebas"
-          style={{ fontSize: 20, letterSpacing: 6, color: '#f0ede8' }}
-        >
-          TOX<span style={{ color: '#c9a84c' }}>1</span>C
-        </span>
-        <span
-          style={{ fontSize: 11, letterSpacing: 2, color: 'rgba(240,237,232,0.4)' }}
-        >
-          @tox1cmusic
-        </span>
-      </div>
-
       {/* Content */}
       <div style={{ position: 'relative', zIndex: 1, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-
-        {/* Trust line */}
-        <div style={{ marginBottom: 20, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
-          <div>
-            <span style={{ color: '#c9a84c', fontSize: 13, letterSpacing: 4 }}>★★★★★</span>
-            <span style={{ fontSize: 11, color: 'rgba(240,237,232,0.45)', letterSpacing: 2, marginRight: 8 }}>
-              200+ WEDDINGS · 100% 5-STAR
-            </span>
-          </div>
-          <span style={{ fontSize: 10, letterSpacing: 4, color: 'rgba(240,237,232,0.5)', fontWeight: 600 }}>
-            MEET TOX1C
-          </span>
-        </div>
 
         {/* Headline — English, bold */}
         <h1

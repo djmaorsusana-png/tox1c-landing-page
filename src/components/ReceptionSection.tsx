@@ -119,12 +119,54 @@ export default function ReceptionSection() {
                 lineHeight: 1.75,
                 color: 'rgba(240,237,232,0.5)',
                 margin: 0,
+                marginBottom: 16,
               }}
             >
               יש אפשרות להמיר את קבלת הפנים לסט אלקטרוני חי
               שמייצר אווירת Sunset יוקרתית לפני שהערב מתחיל.
               שאלו אותנו על זה בשיחה.
             </p>
+
+            {/* Asterisk note */}
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: 8,
+                padding: '10px 14px',
+                background: 'rgba(201,168,76,0.07)',
+                border: '1px dashed rgba(201,168,76,0.3)',
+                borderRadius: 4,
+              }}
+            >
+              <span
+                style={{
+                  color: '#c9a84c',
+                  fontSize: 14,
+                  fontWeight: 700,
+                  lineHeight: 1.4,
+                  flexShrink: 0,
+                  marginTop: 1,
+                }}
+              >
+                ✶
+              </span>
+              <p
+                style={{
+                  fontSize: 12,
+                  lineHeight: 1.65,
+                  color: 'rgba(240,237,232,0.45)',
+                  margin: 0,
+                  direction: 'rtl',
+                }}
+              >
+                ניתן לסגור{' '}
+                <span style={{ color: '#c9a84c', fontWeight: 600 }}>קבלת פנים בלבד</span>
+                {' '}בכפוף לתאריך פנוי.
+                <br />
+                שלחו לנו הודעת ווצאפ ונדבר.
+              </p>
+            </div>
           </div>
         </div>
       </div>

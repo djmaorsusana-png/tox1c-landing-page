@@ -29,6 +29,7 @@ export default function Hero() {
         loop
         muted
         playsInline
+        poster="https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/images/hero.jpg"
         style={{
           position: 'absolute',
           inset: 0,

@@ -19,7 +19,7 @@ export default function Profile() {
         }}
       >
         <img
-          src="/images/portrait.jpg"
+          src="/images/portrait-dark.jpg"
           alt="מאור ואופק — TOX1C"
           style={{
             width: '100%',

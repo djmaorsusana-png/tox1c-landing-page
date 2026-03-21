@@ -91,6 +91,15 @@ export default function ReceptionSection() {
   return (
     <section style={{ background: '#0d0d11', padding: '56px 28px' }}>
       <div style={{ width: '100%', maxWidth: 440, margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: 28 }}>
+          <span style={{ fontSize: 11, letterSpacing: 4, color: '#c9a84c', fontWeight: 500, display: 'block', marginBottom: 12 }}>
+            // THE LIVE RECEPTION
+          </span>
+          <h2 className="bebas" style={{ fontSize: 'clamp(32px, 9vw, 52px)', color: '#f0ede8', lineHeight: 1, letterSpacing: '0.03em', margin: 0 }}>
+            קבלת פנים{' '}
+            <span style={{ color: '#c9a84c' }}>אחרת.</span>
+          </h2>
+        </div>
         <div
           style={{
             background: 'rgba(201,168,76,0.06)',
@@ -173,3 +182,4 @@ export default function ReceptionSection() {
     </section>
   )
 }
+

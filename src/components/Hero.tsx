@@ -1,8 +1,19 @@
+import { useEffect, useRef } from 'react'
+
 export default function Hero() {
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    if (sectionRef.current) {
+      sectionRef.current.style.height = `${window.innerHeight}px`
+    }
+  }, [])
+
   return (
     <section
+      ref={sectionRef}
       style={{
-        height: '100dvh',
+        height: '100svh',
         position: 'relative',
         overflow: 'hidden',
         background: '#f4f4f4',
@@ -19,6 +30,8 @@ export default function Hero() {
           height: '100%',
           objectFit: 'cover',
           objectPosition: 'center',
+          willChange: 'transform',
+          transform: 'translateZ(0)',
         }}
       />
 

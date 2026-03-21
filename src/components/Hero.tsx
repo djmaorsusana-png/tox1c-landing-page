@@ -16,10 +16,10 @@ export default function Hero() {
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundImage: 'url(/images/hero.jpg)',
+          backgroundImage: 'url(/images/wedding-stage.jpg)',
           backgroundSize: 'cover',
-          backgroundPosition: 'center 30%',
-          filter: 'brightness(0.42)',
+          backgroundPosition: 'center 25%',
+          filter: 'brightness(0.38)',
         }}
       />
 

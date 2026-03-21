@@ -145,6 +145,7 @@ export default function MomentSlider() {
             lineHeight: 1,
             letterSpacing: '0.03em',
             marginBottom: 20,
+            direction: 'ltr',
           }}
         >
           100% ENERGY.

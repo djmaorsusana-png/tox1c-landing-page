@@ -7,13 +7,13 @@ export default function Hero() {
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'space-between',
         alignItems: 'center',
-        padding: '100px 28px 52px',
+        justifyContent: 'flex-start',
+        padding: '100px 28px 0',
         background: '#f4f4f4',
       }}
     >
-      {/* Silhouette image */}
+      {/* Silhouette image — fills full section */}
       <img
         src="https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/hero-silhouette.jpg.jpg"
         alt="TOX1C — Maor & Ofek"
@@ -27,17 +27,18 @@ export default function Hero() {
         }}
       />
 
-      {/* Subtle gradient at bottom so CTA stays readable */}
+      {/* Strong white gradient covers top — text sits on clean white */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
           background:
-            'linear-gradient(to bottom, rgba(244,244,244,0.1) 0%, rgba(244,244,244,0.05) 50%, rgba(244,244,244,0.75) 85%, rgba(244,244,244,1) 100%)',
+            'linear-gradient(to bottom, rgba(244,244,244,1) 0%, rgba(244,244,244,1) 35%, rgba(244,244,244,0.6) 55%, rgba(244,244,244,0) 75%)',
+          pointerEvents: 'none',
         }}
       />
 
-      {/* Content */}
+      {/* All content at top — above the silhouette */}
       <div style={{ position: 'relative', zIndex: 1, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 
         <h1
@@ -73,26 +74,23 @@ export default function Hero() {
           <span style={{ color: '#0a0a0a', fontWeight: 600 }}>טוקסיק</span> מביאים את הסטנדרט הבינלאומי הזה ישירות לאירוע שלכם.
         </p>
 
-      </div>
+        <a
+          href="#form"
+          style={{
+            background: '#0a0a0a',
+            color: '#ffffff',
+            padding: '15px 32px',
+            borderRadius: 3,
+            fontSize: 14,
+            fontWeight: 700,
+            letterSpacing: 1.5,
+            textDecoration: 'none',
+          }}
+        >
+          CHECK AVAILABILITY →
+        </a>
 
-      {/* CTA — bottom */}
-      <a
-        href="#form"
-        style={{
-          position: 'relative',
-          zIndex: 1,
-          background: '#0a0a0a',
-          color: '#ffffff',
-          padding: '15px 32px',
-          borderRadius: 3,
-          fontSize: 14,
-          fontWeight: 700,
-          letterSpacing: 1.5,
-          textDecoration: 'none',
-        }}
-      >
-        CHECK AVAILABILITY →
-      </a>
+      </div>
 
       {/* Bottom line */}
       <div
@@ -103,7 +101,7 @@ export default function Hero() {
           right: 0,
           height: 1,
           background:
-            'linear-gradient(to left, transparent, rgba(10,10,10,0.15), transparent)',
+            'linear-gradient(to left, transparent, rgba(10,10,10,0.12), transparent)',
         }}
       />
     </section>

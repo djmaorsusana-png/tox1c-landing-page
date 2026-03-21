@@ -11,9 +11,8 @@ export default function Navbar() {
   }, [])
 
   const links = [
-    { label: 'THE EXPERIENCE', href: '#why' },
-    { label: 'HYBRID LIVE ACT', href: '#live-act' },
-    { label: 'THE VIBE', href: '#reviews' },
+    { label: 'THE EXPERIENCE', href: '#slider' },
+    { label: 'CONTACT', href: '#form' },
   ]
 
   return (

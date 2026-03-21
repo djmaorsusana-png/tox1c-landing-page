@@ -1,9 +1,8 @@
 export default function Footer() {
   const links = [
     { label: 'Instagram', href: 'https://www.instagram.com/tox1cmusic/' },
-    { label: 'Spotify', href: '#' },
-    { label: 'YouTube', href: '#' },
     { label: 'mit4mit', href: 'https://www.mit4mit.co.il/biz/103387' },
+    { label: 'WhatsApp', href: 'https://wa.me/972528023292' },
   ]
 
   return (
@@ -54,7 +53,7 @@ export default function Footer() {
 
       {/* Copyright */}
       <span style={{ fontSize: 11, color: 'rgba(240,237,232,0.2)', letterSpacing: 1.5 }}>
-        © 2026 TOX1C — MAOR & OFEK
+        © 2026 TOX1C - MAOR & OFEK
       </span>
     </footer>
   )

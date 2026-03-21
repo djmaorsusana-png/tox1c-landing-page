@@ -1,24 +1,24 @@
 import './index.css'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import TrustBar from './components/TrustBar'
-import LiveAct from './components/LiveAct'
-import Gallery from './components/Gallery'
-import Reviews from './components/Reviews'
-import Booking from './components/Booking'
+import MomentSlider from './components/MomentSlider'
+import ReceptionSection from './components/ReceptionSection'
+import ReviewsCarousel from './components/ReviewsCarousel'
+import SimpleContact from './components/SimpleContact'
 import Footer from './components/Footer'
+import WhatsAppFloat from './components/WhatsAppFloat'
 
 export default function App() {
   return (
     <>
       <Navbar />
       <Hero />
-      <TrustBar />
-      <LiveAct />
-      <Gallery />
-      <Reviews />
-      <Booking />
+      <MomentSlider />
+      <ReceptionSection />
+      <ReviewsCarousel />
+      <SimpleContact />
       <Footer />
+      <WhatsAppFloat />
     </>
   )
 }

@@ -17,6 +17,7 @@ export default function Hero() {
         position: 'relative',
         overflow: 'hidden',
         background: '#f4f4f4',
+        direction: 'ltr',
       }}
     >
       {/* Silhouette image */}
@@ -25,7 +26,10 @@ export default function Hero() {
         alt="TOX1C — Maor & Ofek"
         style={{
           position: 'absolute',
-          inset: 0,
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
           width: '100%',
           height: '100%',
           objectFit: 'cover',
@@ -39,7 +43,10 @@ export default function Hero() {
       <div
         style={{
           position: 'absolute',
-          inset: 0,
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
           background:
             'linear-gradient(to bottom, rgba(244,244,244,0) 15%, rgba(10,10,10,0.45) 50%, rgba(10,10,10,0.78) 72%, rgba(10,10,10,0.3) 90%, rgba(245,245,245,1) 100%)',
           pointerEvents: 'none',
@@ -59,6 +66,7 @@ export default function Hero() {
           alignItems: 'center',
           padding: '0 28px 100px',
           textAlign: 'center',
+          direction: 'rtl',
         }}
       >
         {/* Headline */}

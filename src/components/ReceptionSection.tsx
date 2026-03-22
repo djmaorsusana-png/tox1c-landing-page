@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from 'react'
 
 const RECEPTION_VIDEOS = [
-  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/C3292.mov',             ratio: '9/16' },
-  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/videos/reception2.mp4', ratio: '9/16' },
-  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/videos/reception3.mp4', ratio: '16/9' },
-  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/videos/reception.mp4',  ratio: '16/9' },
+  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/C3292.mov' },
+  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/videos/reception2.mp4' },
+  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/videos/reception3.mp4' },
+  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/videos/reception.mp4' },
 ]
 
 function ReceptionVideoCarousel() {
@@ -41,8 +41,7 @@ function ReceptionVideoCarousel() {
       style={{
         position: 'relative',
         width: '100%',
-        aspectRatio: video.ratio,
-        maxHeight: 360,
+        height: 320,
         overflow: 'hidden',
         background: '#000',
       }}

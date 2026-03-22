@@ -216,7 +216,7 @@ export default function ReviewsCarousel() {
       </div>
 
       {/* Link to real reviews + Wikipedia */}
-      <div style={{ textAlign: 'center', marginTop: 28, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
+      <div style={{ textAlign: 'center', marginTop: 28, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 20 }}>
         <a
           href="https://www.mit4mit.co.il/biz/103387"
           target="_blank"

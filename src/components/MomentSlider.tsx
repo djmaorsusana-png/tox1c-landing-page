@@ -23,7 +23,7 @@ export default function MomentSlider() {
   }, [paused, next])
 
   return (
-    <section style={{ background: '#f5f5f5', paddingTop: 64 }}>
+    <section id="slider" style={{ background: '#f5f5f5', paddingTop: 64 }}>
       {/* Eyebrow */}
       <div style={{ textAlign: 'center', marginBottom: 28 }}>
         <span style={{ fontSize: 11, letterSpacing: 4, color: '#c9a84c', fontWeight: 500 }}>
@@ -128,7 +128,6 @@ export default function MomentSlider() {
 
       {/* Copy below slider */}
       <div
-        id="slider"
         style={{
           padding: '48px 28px 64px',
           maxWidth: 560,

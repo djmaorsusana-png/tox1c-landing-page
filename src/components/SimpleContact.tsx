@@ -70,9 +70,9 @@ export default function SimpleContact() {
             margin: 0,
           }}
         >
-          התאריך שלכם
+          בואו נראה אם
           <br />
-          לא מחכה לאף אחד.
+          אנחנו מתאימים.
         </h2>
         <p
           style={{

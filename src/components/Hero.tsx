@@ -115,7 +115,7 @@ export default function Hero() {
             boxShadow: '0 4px 24px rgba(0,0,0,0.25)',
           }}
         >
-          בואו נראה אם אנחנו מתאימים
+          בדקו זמינות לתאריך שלכם
         </a>
 
         {/* Scroll indicator */}

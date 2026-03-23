@@ -62,6 +62,14 @@ body {
   border-radius: 2px;
 }
 
+/* ─── Hero image — desktop fix ─── */
+@media (min-width: 768px) {
+  .hero-img {
+    object-fit: contain !important;
+    object-position: center center !important;
+  }
+}
+
 /* ─── Reveal animations ─── */
 .reveal {
   opacity: 0;

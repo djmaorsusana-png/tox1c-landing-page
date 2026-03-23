@@ -24,6 +24,7 @@ export default function Hero() {
       <img
         src="https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/hero-silhouette.jpg.jpg?v=2"
         alt="TOX1C — Maor & Ofek"
+        className="hero-img"
         style={{
           position: 'absolute',
           top: 0,

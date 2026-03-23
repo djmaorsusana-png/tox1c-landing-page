@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 
 const slides = [
   { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/ADI_7653.jpg',          pos: 'center top', label: 'MAOR & OFEK'   },
@@ -12,6 +12,7 @@ const slides = [
 export default function MomentSlider() {
   const [current, setCurrent] = useState(0)
   const [paused, setPaused] = useState(false)
+  const touchStartX = useRef<number | null>(null)
 
   const next = useCallback(() => setCurrent((c) => (c + 1) % slides.length), [])
   const prev = () => setCurrent((c) => (c - 1 + slides.length) % slides.length)
@@ -22,6 +23,21 @@ export default function MomentSlider() {
     return () => clearInterval(timer)
   }, [paused, next])
 
+  function handleTouchStart(e: React.TouchEvent) {
+    touchStartX.current = e.touches[0].clientX
+    setPaused(true)
+  }
+
+  function handleTouchEnd(e: React.TouchEvent) {
+    if (touchStartX.current === null) return
+    const deltaX = touchStartX.current - e.changedTouches[0].clientX
+    if (Math.abs(deltaX) > 40) {
+      deltaX > 0 ? next() : prev()
+    }
+    touchStartX.current = null
+    setPaused(false)
+  }
+
   return (
     <section id="slider" style={{ background: '#f5f5f5', paddingTop: 64 }}>
       {/* Eyebrow */}
@@ -31,98 +47,89 @@ export default function MomentSlider() {
         </span>
       </div>
 
-      {/* Slider */}
-      <div
-        style={{ position: 'relative', width: '100%', aspectRatio: '4/5', maxHeight: '78vh', overflow: 'hidden' }}
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-        onTouchStart={() => setPaused(true)}
-        onTouchEnd={() => setPaused(false)}
-      >
-        {slides.map((slide, i) => (
-          <div
-            key={i}
-            style={{
-              position: 'absolute',
-              inset: 0,
-              backgroundImage: `url(${slide.src})`,
-              backgroundSize: 'cover',
-              backgroundPosition: slide.pos,
-              opacity: i === current ? 1 : 0,
-              transition: 'opacity 0.9s ease',
-            }}
-          />
-        ))}
-
-        {/* Dark overlay */}
+      {/* Slider wrapper — centered on desktop */}
+      <div className="slider-wrapper">
         <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 40%)',
-          }}
-        />
-
-        {/* Slide label */}
-        <span
-          style={{
-            position: 'absolute',
-            bottom: 52,
-            left: 24,
-            fontSize: 9,
-            letterSpacing: 4,
-            color: 'rgba(255,255,255,0.7)',
-            fontWeight: 500,
-          }}
+          className="slider-container"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
         >
-          // {slides[current].label}
-        </span>
-
-        {/* Prev / Next buttons */}
-        <button
-          onClick={prev}
-          aria-label="הקודם"
-          style={arrowStyle('right')}
-        >
-          ‹
-        </button>
-        <button
-          onClick={next}
-          aria-label="הבא"
-          style={arrowStyle('left')}
-        >
-          ›
-        </button>
-
-        {/* Dots */}
-        <div
-          style={{
-            position: 'absolute',
-            bottom: 20,
-            left: 0,
-            right: 0,
-            display: 'flex',
-            justifyContent: 'center',
-            gap: 8,
-          }}
-        >
-          {slides.map((_, i) => (
-            <button
+          {slides.map((slide, i) => (
+            <div
               key={i}
-              onClick={() => setCurrent(i)}
-              aria-label={`תמונה ${i + 1}`}
               style={{
-                width: i === current ? 20 : 6,
-                height: 6,
-                borderRadius: 3,
-                border: 'none',
-                background: i === current ? '#ffffff' : 'rgba(255,255,255,0.35)',
-                cursor: 'pointer',
-                padding: 0,
-                transition: 'all 0.3s ease',
+                position: 'absolute',
+                inset: 0,
+                backgroundImage: `url(${slide.src})`,
+                backgroundSize: 'cover',
+                backgroundPosition: slide.pos,
+                opacity: i === current ? 1 : 0,
+                transition: 'opacity 0.9s ease',
               }}
             />
           ))}
+
+          {/* Dark overlay */}
+          <div
+            style={{
+              position: 'absolute',
+              inset: 0,
+              background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 40%)',
+              pointerEvents: 'none',
+            }}
+          />
+
+          {/* Slide label */}
+          <span
+            style={{
+              position: 'absolute',
+              bottom: 52,
+              left: 24,
+              fontSize: 9,
+              letterSpacing: 4,
+              color: 'rgba(255,255,255,0.7)',
+              fontWeight: 500,
+            }}
+          >
+            // {slides[current].label}
+          </span>
+
+          {/* Prev / Next buttons */}
+          <button onClick={prev} aria-label="הקודם" style={arrowStyle('right')}>‹</button>
+          <button onClick={next} aria-label="הבא"   style={arrowStyle('left')}>›</button>
+
+          {/* Dots */}
+          <div
+            style={{
+              position: 'absolute',
+              bottom: 20,
+              left: 0,
+              right: 0,
+              display: 'flex',
+              justifyContent: 'center',
+              gap: 8,
+            }}
+          >
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrent(i)}
+                aria-label={`תמונה ${i + 1}`}
+                style={{
+                  width: i === current ? 20 : 6,
+                  height: 6,
+                  borderRadius: 3,
+                  border: 'none',
+                  background: i === current ? '#ffffff' : 'rgba(255,255,255,0.35)',
+                  cursor: 'pointer',
+                  padding: 0,
+                  transition: 'all 0.3s ease',
+                }}
+              />
+            ))}
+          </div>
         </div>
       </div>
 

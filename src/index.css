@@ -65,8 +65,8 @@ body {
 /* ─── Hero image — desktop fix ─── */
 @media (min-width: 768px) {
   .hero-img {
-    object-fit: contain !important;
-    object-position: center center !important;
+    object-fit: cover !important;
+    object-position: center 20% !important;
   }
 }
 

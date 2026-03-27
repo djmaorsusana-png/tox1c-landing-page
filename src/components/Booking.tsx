@@ -138,7 +138,7 @@ export default function Booking() {
               OR REACH US DIRECTLY:
             </p>
             <a
-              href="https://wa.me/972500000000"
+              href={`https://wa.me/972528023292?text=${encodeURIComponent('היי TOX1C! 👋\nראיתי את האתר שלך ואשמח לשמוע פרטים על ה-DJ לאירוע שלי 🎶')}`}
               target="_blank"
               rel="noopener noreferrer"
               style={{

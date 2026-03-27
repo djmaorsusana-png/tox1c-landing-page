@@ -2,7 +2,7 @@ export default function Footer() {
   const links = [
     { label: 'Instagram', href: 'https://www.instagram.com/tox1cmusic/' },
     { label: 'mit4mit', href: 'https://www.mit4mit.co.il/biz/103387' },
-    { label: 'WhatsApp', href: 'https://wa.me/972528023292' },
+    { label: 'WhatsApp', href: `https://wa.me/972528023292?text=${encodeURIComponent('היי TOX1C! 👋\nראיתי את האתר שלך ואשמח לשמוע פרטים על ה-DJ לאירוע שלי 🎶')}` },
   ]
 
   return (

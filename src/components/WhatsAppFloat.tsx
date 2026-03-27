@@ -11,7 +11,7 @@ export default function WhatsAppFloat() {
 
   return (
     <a
-      href="https://wa.me/972528023292"
+      href={`https://wa.me/972528023292?text=${encodeURIComponent('היי TOX1C! 👋\nראיתי את האתר שלך ואשמח לשמוע פרטים על ה-DJ לאירוע שלי 🎶')}`}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="WhatsApp"

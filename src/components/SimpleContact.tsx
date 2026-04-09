@@ -47,7 +47,7 @@ export default function SimpleContact() {
       }}
     >
       {/* Heading */}
-      <div style={{ textAlign: 'center' }}>
+      <div className="reveal" style={{ textAlign: 'center' }}>
         <span
           style={{
             fontSize: 11,
@@ -117,6 +117,7 @@ export default function SimpleContact() {
         </div>
       ) : (
         <form
+          className="reveal delay-1"
           onSubmit={handleSubmit}
           style={{
             width: '100%',
@@ -131,6 +132,7 @@ export default function SimpleContact() {
             type="text"
             placeholder="שם מלא"
             required
+            className="input-field"
             style={inputStyle}
           />
           <input
@@ -138,6 +140,7 @@ export default function SimpleContact() {
             type="tel"
             placeholder="טלפון"
             required
+            className="input-field"
             style={inputStyle}
           />
           <input
@@ -145,6 +148,7 @@ export default function SimpleContact() {
             type="text"
             placeholder="תאריך האירוע - אפשר משוער, עוזר לנו לבדוק זמינות"
             required
+            className="input-field"
             style={inputStyle}
           />
           {error && (
@@ -153,6 +157,7 @@ export default function SimpleContact() {
           <button
             type="submit"
             disabled={loading}
+            className="btn-submit"
             style={{
               background: loading ? 'rgba(10,10,10,0.4)' : '#0a0a0a',
               color: '#ffffff',
@@ -172,7 +177,7 @@ export default function SimpleContact() {
       )}
 
       {/* WhatsApp CTA - prominent */}
-      <div style={{ width: '100%', maxWidth: 440, textAlign: 'center' }}>
+      <div className="reveal delay-2" style={{ width: '100%', maxWidth: 440, textAlign: 'center' }}>
         <p style={{ fontSize: 12, color: 'rgba(10,10,10,0.25)', letterSpacing: 1, marginBottom: 14 }}>
           או דברו איתנו ישירות
         </p>

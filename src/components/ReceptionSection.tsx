@@ -97,7 +97,7 @@ export default function ReceptionSection() {
   return (
     <section style={{ background: '#ffffff', padding: '56px 28px' }}>
       <div style={{ width: '100%', maxWidth: 440, margin: '0 auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: 28 }}>
+        <div className="reveal" style={{ textAlign: 'center', marginBottom: 28 }}>
           <span style={{ fontSize: 11, letterSpacing: 4, color: '#c9a84c', fontWeight: 500, display: 'block', marginBottom: 12 }}>
             // THE LIVE RECEPTION
           </span>
@@ -106,7 +106,7 @@ export default function ReceptionSection() {
             <span style={{ WebkitTextStroke: '1.5px #0a0a0a', color: 'transparent' }}>אחרת.</span>
           </h2>
         </div>
-        <div
+        <div className="reveal delay-1"
           style={{
             background: '#f5f5f5',
             border: '1px solid rgba(0,0,0,0.1)',

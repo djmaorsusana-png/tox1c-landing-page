@@ -59,6 +59,7 @@ export default function ReviewsCarousel() {
 
       {/* Hero quote */}
       <div
+        className="reveal"
         style={{
           padding: '0 24px 40px',
           maxWidth: 560,
@@ -169,6 +170,7 @@ export default function ReviewsCarousel() {
           <div
             key={i}
             onClick={() => setCurrent(i)}
+            className="review-card"
             style={{
               flexShrink: 0,
               width: 'min(80vw, 300px)',
@@ -180,7 +182,7 @@ export default function ReviewsCarousel() {
               display: 'flex',
               flexDirection: 'column',
               gap: 14,
-              transition: 'border-color 0.3s',
+              cursor: 'pointer',
             }}
           >
             <span style={{ color: '#c9a84c', fontSize: 13, letterSpacing: 3 }}>★★★★★</span>
@@ -216,17 +218,16 @@ export default function ReviewsCarousel() {
       </div>
 
       {/* Link to real reviews + Wikipedia */}
-      <div style={{ textAlign: 'center', marginTop: 28, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 20 }}>
+      <div className="reveal delay-1" style={{ textAlign: 'center', marginTop: 28, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 20 }}>
         <a
           href="https://www.mit4mit.co.il/biz/103387"
           target="_blank"
           rel="noopener noreferrer"
+          className="link-draw"
           style={{
             fontSize: 12,
             letterSpacing: 2,
             color: 'rgba(10,10,10,0.35)',
-            textDecoration: 'none',
-            borderBottom: '1px solid rgba(10,10,10,0.15)',
             paddingBottom: 2,
           }}
         >

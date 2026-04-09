@@ -104,6 +104,7 @@ export default function Hero() {
         {/* CTA */}
         <a
           href="#form"
+          className="btn-primary"
           style={{
             background: '#ffffff',
             color: '#0a0a0a',
@@ -114,15 +115,34 @@ export default function Hero() {
             letterSpacing: 2,
             textDecoration: 'none',
             boxShadow: '0 4px 24px rgba(0,0,0,0.25)',
+            display: 'inline-block',
           }}
         >
           בדקו זמינות לתאריך שלכם
         </a>
 
-        {/* Scroll indicator */}
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, marginTop: 28 }}>
-          <span style={{ fontSize: 8, letterSpacing: 3, color: 'rgba(255,255,255,0.25)' }}>SCROLL</span>
-          <div style={{ width: 1, height: 24, background: 'linear-gradient(to bottom, rgba(255,255,255,0.25), transparent)' }} />
+        {/* Scroll indicator — mouse icon with animated dot */}
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, marginTop: 32 }}>
+          <span style={{ fontSize: 8, letterSpacing: 3, color: 'rgba(255,255,255,0.2)' }}>SCROLL</span>
+          <div style={{
+            width: 22,
+            height: 34,
+            borderRadius: 11,
+            border: '1.5px solid rgba(255,255,255,0.22)',
+            display: 'flex',
+            justifyContent: 'center',
+            paddingTop: 5,
+          }}>
+            <div
+              className="scroll-dot"
+              style={{
+                width: 3,
+                height: 7,
+                borderRadius: 2,
+                background: 'rgba(255,255,255,0.5)',
+              }}
+            />
+          </div>
         </div>
       </div>
     </section>

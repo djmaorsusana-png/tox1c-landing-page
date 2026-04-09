@@ -66,7 +66,7 @@ export default function Navbar() {
 
       <a
         href="#form"
-        className="bebas max-md:hidden"
+        className="bebas max-md:hidden btn-hover"
         style={{
           background: '#0a0a0a',
           color: '#ffffff',
@@ -75,10 +75,10 @@ export default function Navbar() {
           fontSize: 14,
           letterSpacing: 2,
           textDecoration: 'none',
-          transition: 'opacity 0.2s',
+          transition: 'box-shadow 0.3s ease',
         }}
-        onMouseEnter={(e) => ((e.target as HTMLElement).style.opacity = '0.75')}
-        onMouseLeave={(e) => ((e.target as HTMLElement).style.opacity = '1')}
+        onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.boxShadow = '0 4px 20px rgba(0,0,0,0.2)')}
+        onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.boxShadow = 'none')}
       >
         CHECK AVAILABILITY
       </a>

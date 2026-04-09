@@ -41,7 +41,7 @@ export default function MomentSlider() {
   return (
     <section id="slider" style={{ background: '#f5f5f5', paddingTop: 64 }}>
       {/* Eyebrow */}
-      <div style={{ textAlign: 'center', marginBottom: 28 }}>
+      <div className="reveal" style={{ textAlign: 'center', marginBottom: 28 }}>
         <span style={{ fontSize: 11, letterSpacing: 4, color: '#c9a84c', fontWeight: 500 }}>
           // THE VIBE
         </span>
@@ -143,7 +143,7 @@ export default function MomentSlider() {
         }}
       >
         <h2
-          className="bebas"
+          className="bebas reveal"
           style={{
             fontSize: 'clamp(36px, 9vw, 64px)',
             fontWeight: 400,
@@ -159,6 +159,7 @@ export default function MomentSlider() {
           <span style={{ color: '#c9a84c' }}>ZERO COMPROMISES.</span>
         </h2>
         <p
+          className="reveal delay-1"
           style={{
             fontSize: 15,
             lineHeight: 1.85,
@@ -170,14 +171,13 @@ export default function MomentSlider() {
         </p>
         <a
           href="#form"
+          className="link-draw reveal delay-2"
           style={{
             display: 'inline-block',
             marginTop: 28,
             fontSize: 12,
             letterSpacing: 2,
             color: '#0a0a0a',
-            textDecoration: 'none',
-            borderBottom: '1px solid rgba(10,10,10,0.3)',
             paddingBottom: 2,
           }}
         >

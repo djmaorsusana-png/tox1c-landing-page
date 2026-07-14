@@ -4,7 +4,9 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import MomentSlider from './components/MomentSlider'
 import ReceptionSection from './components/ReceptionSection'
+import Profile from './components/Profile'
 import ReviewsCarousel from './components/ReviewsCarousel'
+import FAQ from './components/FAQ'
 import SimpleContact from './components/SimpleContact'
 import Footer from './components/Footer'
 import WhatsAppFloat from './components/WhatsAppFloat'
@@ -37,7 +39,9 @@ export default function App() {
       <Hero />
       <MomentSlider />
       <ReceptionSection />
+      <Profile />
       <ReviewsCarousel />
+      <FAQ />
       <SimpleContact />
       <Footer />
       <WhatsAppFloat />

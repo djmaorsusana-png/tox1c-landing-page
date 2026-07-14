@@ -121,6 +121,15 @@ export default function Hero() {
           בדקו זמינות לתאריך שלכם
         </a>
 
+        {/* Trust badge */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 18, direction: 'rtl' }}>
+          <span style={{ color: '#c9a84c', fontSize: 12, letterSpacing: 2 }}>★★★★★</span>
+          <span style={{ width: 1, height: 11, background: 'rgba(255,255,255,0.2)' }} />
+          <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', letterSpacing: 0.3 }}>
+            5.0 · 87 ביקורות · mit4mit
+          </span>
+        </div>
+
         {/* Scroll indicator — mouse icon with animated dot */}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, marginTop: 32 }}>
           <span style={{ fontSize: 8, letterSpacing: 3, color: 'rgba(255,255,255,0.2)' }}>SCROLL</span>

@@ -27,7 +27,7 @@ export default function SimpleContact() {
       if (!res.ok) throw new Error('שגיאת שרת')
       setSubmitted(true)
     } catch {
-      setError('משהו השתבש, נסו שוב או פנו דרך WhatsApp')
+      setError('משהו השתבש בשליחת הטופס')
     } finally {
       setLoading(false)
     }
@@ -86,6 +86,32 @@ export default function SimpleContact() {
           השאירו פרטים ונחזור אליכם תוך 24 שעות עם תשובה.
         </p>
 
+        <div
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 8,
+            marginTop: 18,
+            background: 'rgba(201,168,76,0.08)',
+            border: '1px solid rgba(201,168,76,0.25)',
+            borderRadius: 100,
+            padding: '7px 16px',
+          }}
+        >
+          <span
+            style={{
+              width: 6,
+              height: 6,
+              borderRadius: '50%',
+              background: '#c9a84c',
+              display: 'inline-block',
+              flexShrink: 0,
+            }}
+          />
+          <span style={{ fontSize: 12, color: '#0a0a0a', fontWeight: 600 }}>
+            אנחנו סוגרים מספר מוגבל של תאריכים בעונה
+          </span>
+        </div>
       </div>
 
       {/* Form */}
@@ -111,9 +137,27 @@ export default function SimpleContact() {
           >
             קלטנו אתכם.
           </p>
-          <p style={{ fontSize: 13, color: 'rgba(10,10,10,0.45)', lineHeight: 1.6 }}>
+          <p style={{ fontSize: 13, color: 'rgba(10,10,10,0.45)', lineHeight: 1.6, marginBottom: 20 }}>
             הפרטים אצלנו, נבדוק ביומן ונחזור אליכם ממש בקרוב.
           </p>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: 20, flexWrap: 'wrap' }}>
+            <a
+              href={`https://wa.me/972528023292?text=${encodeURIComponent('היי TOX1C! 👋\nממש עכשיו שלחתי פרטים בטופס באתר, רוצה לוודא שהגיע 🎶')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ fontSize: 13, color: '#1da851', fontWeight: 700, textDecoration: 'none' }}
+            >
+              רוצים תשובה מהירה? כתבו לנו בווצאפ ←
+            </a>
+            <a
+              href="https://www.instagram.com/tox1cmusic/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ fontSize: 13, color: 'rgba(10,10,10,0.5)', fontWeight: 600, textDecoration: 'none', direction: 'ltr', display: 'inline-block' }}
+            >
+              @tox1cmusic ↗
+            </a>
+          </div>
         </div>
       ) : (
         <form
@@ -146,13 +190,23 @@ export default function SimpleContact() {
           <input
             name="eventDate"
             type="text"
-            placeholder="תאריך האירוע - אפשר משוער, עוזר לנו לבדוק זמינות"
+            placeholder="תאריך האירוע (גם משוער)"
             required
             className="input-field"
             style={inputStyle}
           />
           {error && (
-            <p style={{ fontSize: 13, color: '#e57373', textAlign: 'center' }}>{error}</p>
+            <p style={{ fontSize: 13, color: '#e57373', textAlign: 'center' }}>
+              {error} — נסו שוב, או{' '}
+              <a
+                href={`https://wa.me/972528023292?text=${encodeURIComponent('היי TOX1C! 👋\nראיתי את האתר שלך ואשמח לשמוע פרטים על ה-DJ לאירוע שלי 🎶')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: '#1da851', fontWeight: 700, textDecoration: 'underline' }}
+              >
+                כתבו לנו בווצאפ
+              </a>
+            </p>
           )}
           <button
             type="submit"

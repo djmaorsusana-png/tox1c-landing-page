@@ -1,115 +1,71 @@
 export default function Profile() {
   return (
-    <section
-      style={{
-        background: '#111116',
-        borderTop: '1px solid rgba(201,168,76,0.1)',
-        borderBottom: '1px solid rgba(201,168,76,0.1)',
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-      }}
-      className="max-md:block"
-    >
-      {/* Photo */}
+    <section id="about" style={{ background: '#f5f5f5', padding: '56px 24px' }}>
       <div
         style={{
-          position: 'relative',
-          overflow: 'hidden',
-          minHeight: 440,
+          maxWidth: 900,
+          margin: '0 auto',
+          display: 'grid',
+          gridTemplateColumns: '200px 1fr',
+          gap: 32,
+          alignItems: 'center',
         }}
+        className="profile-grid"
       >
-        <img
-          src="https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/images/portrait-dark.jpg"
-          alt="מאור ואופק — TOX1C"
+        {/* Photo */}
+        <div
+          className="reveal"
           style={{
             width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center top',
-            display: 'block',
-            filter: 'grayscale(20%)',
-          }}
-        />
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background: 'linear-gradient(to left, rgba(17,17,22,0.6) 0%, transparent 60%)',
-          }}
-        />
-      </div>
-
-      {/* Text */}
-      <div
-        style={{
-          padding: 'clamp(40px, 6vw, 72px)',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          gap: 20,
-        }}
-      >
-        <span className="eyebrow">// מאור & אופק</span>
-
-        <h2
-          className="bebas"
-          dir="ltr"
-          style={{
-            fontSize: 'clamp(40px, 5vw, 68px)',
-            lineHeight: 0.92,
-            letterSpacing: '0.02em',
+            aspectRatio: '1/1',
+            borderRadius: '50%',
+            overflow: 'hidden',
+            margin: '0 auto',
+            border: '2px solid rgba(201,168,76,0.35)',
           }}
         >
-          MAOR &<br />
-          <span
-            style={{ WebkitTextStroke: '2px rgba(240,237,232,0.25)', color: 'transparent' }}
-          >
-            OFEK.
+          <img
+            src="https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/images/portrait-dark.jpg"
+            alt="מאור ואופק — TOX1C"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+          />
+        </div>
+
+        {/* Text */}
+        <div className="reveal delay-1" style={{ textAlign: 'center' }}>
+          <span style={{ fontSize: 11, letterSpacing: 4, color: '#c9a84c', fontWeight: 500, display: 'block', marginBottom: 10 }}>
+            // מי אנחנו
           </span>
-        </h2>
-
-        <p
-          style={{
-            fontSize: 14,
-            lineHeight: 1.85,
-            color: 'rgba(240,237,232,0.55)',
-            maxWidth: 380,
-          }}
-        >
-          אנחנו לא זוג DJים שהרכיבו ביחד — אנחנו שניים שבנו משהו חדש לגמרי בסצנת חתונות ישראל.
-          <br /><br />
-          מאות אירועים אחורה, כל אחד מהם עם SET חי, עם תשומת לב מלאה לזוג, עם תוצאה אחת ברורה: אורחים שמדברים על הלילה הזה שנים אחרי.
-        </p>
-
-        <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap', marginTop: 8 }}>
+          <h2 className="bebas" style={{ fontSize: 'clamp(28px, 6vw, 40px)', color: '#0a0a0a', lineHeight: 1, marginBottom: 14 }}>
+            MAOR &amp; <span style={{ color: '#c9a84c' }}>OFEK.</span>
+          </h2>
+          <p style={{ fontSize: 14, lineHeight: 1.8, color: 'rgba(10,10,10,0.55)', maxWidth: 480, margin: '0 auto 18px' }}>
+            לא זוג תקליטנים שהתחברו סתם — שניים שבנו יחד שפה חדשה לחתונות בישראל.
+            מאות אירועים מאחורינו, תמיד עם הופעה חיה ותשומת לב מלאה לזוג.
+          </p>
           <a
             href="https://www.instagram.com/tox1cmusic/"
             target="_blank"
             rel="noopener noreferrer"
-            style={{
-              fontSize: 12,
-              letterSpacing: 2,
-              color: '#c9a84c',
-              textDecoration: 'none',
-            }}
+            className="link-draw"
+            style={{ fontSize: 13, letterSpacing: 1, color: '#0a0a0a', fontWeight: 600, direction: 'ltr', display: 'inline-block' }}
           >
             @tox1cmusic ↗
           </a>
-          <a
-            href="https://www.mit4mit.co.il/biz/103387"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              fontSize: 12,
-              letterSpacing: 2,
-              color: 'rgba(240,237,232,0.35)',
-              textDecoration: 'none',
-            }}
-          >
-            mit4mit ↗
-          </a>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .profile-grid {
+            grid-template-columns: 1fr !important;
+            justify-items: center;
+          }
+          .profile-grid > div:first-child {
+            max-width: 160px;
+          }
+        }
+      `}</style>
     </section>
   )
 }

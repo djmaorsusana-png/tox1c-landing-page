@@ -55,7 +55,7 @@ export default function ReviewsCarousel() {
   function next() { scrollTo(Math.min(reviews.length - 1, current + 1)) }
 
   return (
-    <section style={{ background: '#f5f5f5', padding: '56px 0 48px' }}>
+    <section id="reviews" style={{ background: '#f5f5f5', padding: '56px 0 48px' }}>
 
       {/* Hero quote */}
       <div

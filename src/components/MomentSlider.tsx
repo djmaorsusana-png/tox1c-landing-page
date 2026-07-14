@@ -32,7 +32,8 @@ export default function MomentSlider() {
     if (touchStartX.current === null) return
     const deltaX = touchStartX.current - e.changedTouches[0].clientX
     if (Math.abs(deltaX) > 40) {
-      deltaX > 0 ? next() : prev()
+      if (deltaX > 0) next()
+      else prev()
     }
     touchStartX.current = null
     setPaused(false)

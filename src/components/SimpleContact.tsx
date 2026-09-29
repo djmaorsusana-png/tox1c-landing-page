@@ -39,7 +39,7 @@ export default function SimpleContact() {
       style={{
         background: '#ffffff',
         borderTop: '1px solid rgba(0,0,0,0.08)',
-        padding: '64px 28px 80px',
+        padding: '48px 28px 56px',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',

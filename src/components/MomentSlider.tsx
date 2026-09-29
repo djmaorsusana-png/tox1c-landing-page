@@ -1,42 +1,76 @@
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 const slides = [
-  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/ADI_7653.jpg',          pos: 'center top', label: 'MAOR & OFEK'   },
-  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/images/wedding-stage.jpg', pos: 'center 30%', label: 'WEDDING NIGHT' },
-  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/images/crowd-day.jpg',     pos: 'center',     label: 'THE CROWD'     },
-  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/images/dj-decks.jpg',      pos: 'center 30%', label: 'THE DECKS'     },
-  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/images/festival.jpg',      pos: 'center 20%', label: 'FESTIVAL MODE' },
-  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/images/live-set.jpg',      pos: 'center',     label: 'LIVE ENERGY'   },
+  { src: '/images/ADI_7653.webp',        pos: 'center top', label: 'MAOR & OFEK'   },
+  { src: '/images/keys-night.webp',      pos: 'center 25%', label: 'LIVE KEYS'     },
+  { src: '/images/crowd-day.webp',       pos: 'center',     label: 'THE CROWD'     },
+  { src: '/images/aqueduct-sunset.webp', pos: 'center 60%', label: 'SUNSET SET'    },
+  { src: '/images/dj-decks.webp',        pos: 'center 30%', label: 'THE DECKS'     },
+  { src: '/images/drums-day.webp',       pos: 'center 35%', label: 'LIVE DRUMS'    },
+  { src: '/images/festival.webp',        pos: 'center 20%', label: 'FESTIVAL MODE' },
+  { src: '/images/wedding-floor.webp',   pos: 'center 55%', label: 'WEDDING NIGHT' },
 ]
 
-export default function MomentSlider() {
-  const [current, setCurrent] = useState(0)
-  const [paused, setPaused] = useState(false)
-  const touchStartX = useRef<number | null>(null)
+const SLIDE_MS = 5000
+const HOLD_MS = 250
+// Ken Burns zoom origin rotates per slide so consecutive images don't drift the same way
+const ZOOM_ORIGINS = ['50% 30%', '30% 50%', '70% 50%', '50% 70%']
 
-  const next = useCallback(() => setCurrent((c) => (c + 1) % slides.length), [])
-  const prev = () => setCurrent((c) => (c - 1 + slides.length) % slides.length)
+export default function MomentSlider() {
+  // `prev` keeps its zoom class while fading out, so the outgoing image doesn't snap back to scale 1
+  const [{ current, prev }, setSlide] = useState({ current: 0, prev: -1 })
+  const [hovering, setHovering] = useState(false)
+  const [holding, setHolding] = useState(false)
+  const [inView, setInView] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const pointer = useRef<{ x: number; t: number } | null>(null)
+  const holdTimer = useRef<number>(0)
+
+  const paused = hovering || holding || !inView
+
+  const goTo = (n: number) =>
+    setSlide((s) => ({ current: (n + slides.length) % slides.length, prev: s.current }))
+  const next = () => goTo(current + 1)
+  const back = () => goTo(current - 1)
 
   useEffect(() => {
-    if (paused) return
-    const timer = setInterval(next, 4000)
-    return () => clearInterval(timer)
-  }, [paused, next])
+    const el = containerRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), { threshold: 0.4 })
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
 
-  function handleTouchStart(e: React.TouchEvent) {
-    touchStartX.current = e.touches[0].clientX
-    setPaused(true)
+  function handlePointerDown(e: React.PointerEvent) {
+    if ((e.target as HTMLElement).closest('button')) return
+    // Capture so pointerup always arrives here, even if released outside — otherwise `holding` could stick
+    e.currentTarget.setPointerCapture(e.pointerId)
+    pointer.current = { x: e.clientX, t: Date.now() }
+    holdTimer.current = window.setTimeout(() => setHolding(true), HOLD_MS)
   }
 
-  function handleTouchEnd(e: React.TouchEvent) {
-    if (touchStartX.current === null) return
-    const deltaX = touchStartX.current - e.changedTouches[0].clientX
-    if (Math.abs(deltaX) > 40) {
-      if (deltaX > 0) next()
-      else prev()
+  function handlePointerUp(e: React.PointerEvent) {
+    clearTimeout(holdTimer.current)
+    setHolding(false)
+    const start = pointer.current
+    pointer.current = null
+    if (!start) return
+    const dx = e.clientX - start.x
+    if (Math.abs(dx) > 40) {
+      if (dx < 0) next()
+      else back()
+    } else if (Date.now() - start.t < HOLD_MS) {
+      // Stories-style tap: right half = next, left half = previous
+      const rect = e.currentTarget.getBoundingClientRect()
+      if (e.clientX - rect.left > rect.width / 2) next()
+      else back()
     }
-    touchStartX.current = null
-    setPaused(false)
+  }
+
+  function handlePointerCancel() {
+    clearTimeout(holdTimer.current)
+    setHolding(false)
+    pointer.current = null
   }
 
   return (
@@ -51,93 +85,120 @@ export default function MomentSlider() {
       {/* Slider wrapper — centered on desktop */}
       <div className="slider-wrapper">
         <div
-          className="slider-container"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
+          ref={containerRef}
+          className="slider-container story"
+          // Hover-pause for real mice only — touch fires compat mouseenter with no mouseleave, which would freeze the slider
+          onPointerEnter={(e) => e.pointerType === 'mouse' && setHovering(true)}
+          onPointerLeave={(e) => e.pointerType === 'mouse' && setHovering(false)}
+          onPointerDown={handlePointerDown}
+          onPointerUp={handlePointerUp}
+          onPointerCancel={handlePointerCancel}
+          onContextMenu={(e) => e.preventDefault()}
+          style={{ direction: 'ltr', cursor: 'pointer', touchAction: 'pan-y', userSelect: 'none' }}
         >
           {slides.map((slide, i) => (
-            <div
+            <img
               key={i}
+              src={slide.src}
+              alt=""
+              loading="lazy"
+              decoding="async"
+              draggable={false}
+              className={i === current || i === prev ? 'kenburns' : undefined}
               style={{
                 position: 'absolute',
                 inset: 0,
-                backgroundImage: `url(${slide.src})`,
-                backgroundSize: 'cover',
-                backgroundPosition: slide.pos,
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: slide.pos,
+                transformOrigin: ZOOM_ORIGINS[i % ZOOM_ORIGINS.length],
+                animationPlayState: paused && i === current ? 'paused' : 'running',
                 opacity: i === current ? 1 : 0,
                 transition: 'opacity 0.9s ease',
               }}
             />
           ))}
 
-          {/* Dark overlay */}
+          {/* Overlays — top for progress bars, bottom for label */}
           <div
             style={{
               position: 'absolute',
               inset: 0,
-              background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 40%)',
+              background:
+                'linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, transparent 16%), linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 40%)',
               pointerEvents: 'none',
             }}
           />
+
+          {/* Progress bars — the active bar's animation end advances the slide, so pausing freezes both */}
+          <div
+            aria-hidden="true"
+            style={{
+              position: 'absolute',
+              top: 12,
+              left: 12,
+              right: 12,
+              display: 'flex',
+              gap: 4,
+              zIndex: 2,
+              pointerEvents: 'none',
+            }}
+          >
+            {slides.map((_, i) => (
+              <div
+                key={i}
+                style={{
+                  flex: 1,
+                  height: 2.5,
+                  borderRadius: 2,
+                  background: 'rgba(255,255,255,0.35)',
+                  overflow: 'hidden',
+                }}
+              >
+                <div
+                  key={i === current ? `active-${current}` : i}
+                  className={i === current ? 'story-progress' : undefined}
+                  onAnimationEnd={i === current ? next : undefined}
+                  style={{
+                    height: '100%',
+                    background: '#ffffff',
+                    transformOrigin: 'left',
+                    transform: i < current ? 'scaleX(1)' : 'scaleX(0)',
+                    animationDuration: `${SLIDE_MS}ms`,
+                    animationPlayState: paused ? 'paused' : 'running',
+                  }}
+                />
+              </div>
+            ))}
+          </div>
 
           {/* Slide label */}
           <span
             style={{
               position: 'absolute',
-              bottom: 52,
+              bottom: 20,
               left: 24,
               fontSize: 9,
               letterSpacing: 4,
               color: 'rgba(255,255,255,0.7)',
               fontWeight: 500,
+              pointerEvents: 'none',
             }}
           >
             // {slides[current].label}
           </span>
 
-          {/* Prev / Next buttons */}
-          <button onClick={prev} aria-label="הקודם" style={arrowStyle('right')}>‹</button>
-          <button onClick={next} aria-label="הבא"   style={arrowStyle('left')}>›</button>
-
-          {/* Dots */}
-          <div
-            style={{
-              position: 'absolute',
-              bottom: 20,
-              left: 0,
-              right: 0,
-              display: 'flex',
-              justifyContent: 'center',
-              gap: 8,
-            }}
-          >
-            {slides.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrent(i)}
-                aria-label={`תמונה ${i + 1}`}
-                style={{
-                  width: i === current ? 20 : 6,
-                  height: 6,
-                  borderRadius: 3,
-                  border: 'none',
-                  background: i === current ? '#ffffff' : 'rgba(255,255,255,0.35)',
-                  cursor: 'pointer',
-                  padding: 0,
-                  transition: 'all 0.3s ease',
-                }}
-              />
-            ))}
-          </div>
+          {/* Prev / Next — desktop only; on mobile the tap zones replace them */}
+          <button onClick={back} aria-label="הקודם" className="story-arrow" style={arrowStyle('left')}>‹</button>
+          <button onClick={next} aria-label="הבא" className="story-arrow" style={arrowStyle('right')}>›</button>
         </div>
       </div>
 
       {/* Copy below slider */}
       <div
         style={{
-          padding: '48px 28px 64px',
+          padding: '48px 28px 48px',
           maxWidth: 560,
           margin: '0 auto',
           textAlign: 'center',
@@ -205,7 +266,6 @@ function arrowStyle(side: 'left' | 'right'): React.CSSProperties {
     lineHeight: '40px',
     textAlign: 'center',
     cursor: 'pointer',
-    display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     backdropFilter: 'blur(4px)',

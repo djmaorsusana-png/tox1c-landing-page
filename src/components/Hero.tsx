@@ -2,10 +2,40 @@ import { useEffect, useRef } from 'react'
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null)
+  const imgRef = useRef<HTMLImageElement>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (sectionRef.current) {
       sectionRef.current.style.height = `${window.innerHeight}px`
+    }
+  }, [])
+
+  // Parallax: image drifts slower than the page and zooms in slightly; text rises and fades out
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    let frame = 0
+    const update = () => {
+      frame = 0
+      const h = window.innerHeight
+      const y = Math.min(window.scrollY, h)
+      const p = y / h
+      if (imgRef.current) {
+        imgRef.current.style.transform = `translate3d(0, ${y * 0.35}px, 0) scale(${1 + p * 0.08})`
+      }
+      if (contentRef.current) {
+        contentRef.current.style.transform = `translate3d(0, ${-y * 0.2}px, 0)`
+        contentRef.current.style.opacity = String(Math.max(0, 1 - p * 1.8))
+      }
+    }
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update)
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    update()
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      cancelAnimationFrame(frame)
     }
   }, [])
 
@@ -20,43 +50,59 @@ export default function Hero() {
         direction: 'ltr',
       }}
     >
-      {/* Silhouette image */}
-      <img
-        src="https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/hero-silhouette.jpg.jpg?v=2"
-        alt="TOX1C — Maor & Ofek"
-        className="hero-img"
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          objectPosition: 'center',
-          willChange: 'transform',
-          transform: 'translateZ(0)',
-        }}
-      />
-
-      {/* Gradient — dark mid for text readability, fades to page bg at bottom */}
+      {/* Image layer — masked to transparent at the bottom so the parallax-shifted image never leaves a seam at the section edge */}
       <div
         style={{
           position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background:
-            'linear-gradient(to bottom, rgba(244,244,244,0) 15%, rgba(10,10,10,0.45) 50%, rgba(10,10,10,0.78) 72%, rgba(10,10,10,0.3) 90%, rgba(245,245,245,1) 100%)',
-          pointerEvents: 'none',
+          inset: 0,
+          overflow: 'hidden',
+          WebkitMaskImage: 'linear-gradient(to bottom, #000 92%, transparent 100%)',
+          maskImage: 'linear-gradient(to bottom, #000 92%, transparent 100%)',
         }}
-      />
+      >
+        <img
+          ref={imgRef}
+          src="/images/hero-silhouette.webp"
+          srcSet="/images/hero-silhouette-mobile.webp 1125w, /images/hero-silhouette.webp 1920w"
+          sizes="100vw"
+          fetchPriority="high"
+          alt="TOX1C — Maor & Ofek"
+          className="hero-img"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+            willChange: 'transform',
+            transform: 'translate3d(0, 0, 0)',
+          }}
+        />
+
+        {/* Gradient — dark mid for text readability, fades to page bg at bottom */}
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background:
+              'linear-gradient(to bottom, rgba(244,244,244,0) 15%, rgba(10,10,10,0.45) 50%, rgba(10,10,10,0.78) 72%, rgba(10,10,10,0.3) 90%, rgba(245,245,245,1) 100%)',
+            pointerEvents: 'none',
+          }}
+        />
+      </div>
 
       {/* Content — anchored to bottom */}
       <div
+        ref={contentRef}
         style={{
+          willChange: 'transform, opacity',
           position: 'absolute',
           bottom: 0,
           left: 0,
@@ -126,7 +172,7 @@ export default function Hero() {
           <span style={{ color: '#c9a84c', fontSize: 12, letterSpacing: 2 }}>★★★★★</span>
           <span style={{ width: 1, height: 11, background: 'rgba(255,255,255,0.2)' }} />
           <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', letterSpacing: 0.3 }}>
-            5.0 · 87 ביקורות · mit4mit
+            93 ביקורות · mit4mit
           </span>
         </div>
 

@@ -1,41 +1,42 @@
 import { useRef, useState } from 'react'
 
 const heroQuote = {
-  text: 'התחתנו לפני 3 שנים ועד היום כל מי שמתחתן שואל אותנו מי היו הדיג׳ייים שלנו. פשוט רמה בינלאומית.',
-  name: 'גל ואורי',
+  text: 'התחתנו לפני 3 שנים ועד היום כל מי שמתחתן שואל אותנו מי היו הדיג׳יים שלנו. פשוט רמה בינלאומית.',
+  name: 'גל ועדן',
   date: '3 שנים אחרי',
 }
 
+// Source: mit4mit.co.il/biz/103387 — names as shown there, month = when the review was posted (checked 30.09.2026)
 const reviews = [
   {
     text: 'הקבלת פנים, המוזיקה בחתונה, האפטר — הכל היה מדוייק. מחיר שלא מצדיק את העבודה שלהם. מגיע להם הרבה יותר.',
-    name: 'רום וגל',
+    name: 'רום',
     date: 'פברואר 2026',
   },
   {
+    text: 'נפגשו איתנו לפני החתונה וכבר שם הבנו שאנחנו יכולים להיות בראש שקט. ביום האירוע הגיעו מוקדם ולאורך כל הערב ידעו להתאים את המוזיקה לקהל שלנו. אין אחד שלא מחמיא לנו על האווירה — הקהל ביקש מהם להמשיך אחרי הסיום.',
+    name: 'מוריה',
+    date: 'ינואר 2026',
+  },
+  {
     text: 'לא הפסקנו לקבל עליהם מחמאות עוד אחרי האירוע. אהבנו שמעבר לזה שהם יודעים מה הם עושים, הם נותנים מקום לשאול ולכוון אותם.',
-    name: 'שקד ונועם',
+    name: 'שקד',
     date: 'דצמבר 2025',
   },
   {
     text: 'מוזיקה מדויקת, מעבר חלק בין סגנונות, קריאה מושלמת של הרחבה ואנרגיות שלא ירדו לשנייה. תודה על לילה שלא נשכח לעולם.',
-    name: 'שיר ודור',
+    name: 'שיר',
     date: 'נובמבר 2025',
   },
   {
     text: 'אין בן אדם אחד מהחתונה שלנו שלא שאל אותנו מי היו הדיגיים המטורפים האלה. אפילו כשהוציאו למנה עיקרית — כולם נשארו ברחבה.',
-    name: 'דניאל ותהילה',
+    name: 'דניאל',
     date: 'נובמבר 2025',
   },
   {
-    text: 'נפגשו איתנו לפני החתונה וכבר שם הבנו שאנחנו יכולים להיות בראש שקט. ביום האירוע הגיעו מוקדם ולאורך כל הערב ידעו להתאים את המוזיקה לקהל שלנו. אין אחד שלא מחמיא לנו על האווירה — הקהל ביקש מהם להמשיך אחרי הסיום.',
-    name: 'מוריה וניב',
-    date: 'אוקטובר 2025',
-  },
-  {
     text: 'לא היה מפגש חתן-כלה-דיג׳יים, זה ממש היה ישיבה עם חברים. רק חיכינו לפגישה הבאה. הייתה חתונה מהאגדות שעלתה על כל ציפיה ודמיון — הם אמנים, יוצרים, מורי דרך. יש להם כישרון מטורף.',
-    name: 'אור ומאיה',
-    date: 'ספטמבר 2025',
+    name: 'מעיין',
+    date: 'אוקטובר 2025',
   },
 ]
 
@@ -55,7 +56,7 @@ export default function ReviewsCarousel() {
   function next() { scrollTo(Math.min(reviews.length - 1, current + 1)) }
 
   return (
-    <section id="reviews" style={{ background: '#f5f5f5', padding: '56px 0 48px' }}>
+    <section id="reviews" style={{ background: '#f5f5f5', padding: '48px 0' }}>
 
       {/* Hero quote */}
       <div
@@ -83,7 +84,7 @@ export default function ReviewsCarousel() {
         }}>
           <span style={{ color: '#c9a84c', fontSize: 13, letterSpacing: 2 }}>★★★★★</span>
           <span style={{ width: 1, height: 12, background: 'rgba(255,255,255,0.15)' }} />
-          <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.8)', letterSpacing: 1 }}>5.0 · 87 ביקורות</span>
+          <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.8)', letterSpacing: 1 }}>93 ביקורות</span>
         </div>
 
         {/* Quote marks */}
@@ -217,7 +218,7 @@ export default function ReviewsCarousel() {
         ))}
       </div>
 
-      {/* Link to real reviews + Wikipedia */}
+      {/* Link to real reviews */}
       <div className="reveal delay-1" style={{ textAlign: 'center', marginTop: 28, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 20 }}>
         <a
           href="https://www.mit4mit.co.il/biz/103387"
@@ -234,37 +235,6 @@ export default function ReviewsCarousel() {
           לכל הביקורות האמיתיות ב-mit4mit ←
         </a>
 
-        <a
-          href="https://he.wikipedia.org/wiki/TOX1C"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: 10,
-            textDecoration: 'none',
-            background: '#f0f0f0',
-            border: '1px solid rgba(0,0,0,0.1)',
-            borderRadius: 100,
-            padding: '6px 14px 6px 8px',
-          }}
-        >
-          <span style={{
-            width: 20,
-            height: 20,
-            borderRadius: '50%',
-            background: '#888888',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: 11,
-            fontWeight: 700,
-            color: '#ffffff',
-            flexShrink: 0,
-            fontFamily: 'Georgia, serif',
-          }}>W</span>
-          <span style={{ fontSize: 11, color: 'rgba(10,10,10,0.5)', fontWeight: 500 }}>רוצים לדעת עלינו עוד?</span>
-        </a>
       </div>
     </section>
   )

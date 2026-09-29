@@ -1,9 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
 
 const RECEPTION_VIDEOS = [
-  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/videos/reception2.mp4' },
-  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/videos/reception3.mp4' },
-  { src: 'https://pub-48a611160cbb4cd99816600fd74e3f11.r2.dev/videos/reception.mp4' },
+  { src: '/reception/night-drums.mp4',  poster: '/reception/night-drums.webp' },
+  { src: '/reception/sunset.mp4',       poster: '/reception/sunset.webp' },
+  { src: '/reception/daylight.mp4',     poster: '/reception/daylight.webp' },
+  { src: '/reception/garden-day.mp4',   poster: '/reception/garden-day.webp' },
+  { src: '/reception/garden-night.mp4', poster: '/reception/garden-night.webp' },
 ]
 
 function ReceptionVideoCarousel() {
@@ -45,7 +47,6 @@ function ReceptionVideoCarousel() {
     }
     vid.load()
     vid.oncanplay = () => {
-      if (current === 0) vid.currentTime = 3
       vid.play().catch(() => {})
       vid.oncanplay = null
     }
@@ -59,7 +60,8 @@ function ReceptionVideoCarousel() {
       style={{
         position: 'relative',
         width: '100%',
-        height: 320,
+        aspectRatio: '4 / 5',
+        maxHeight: '72vh',
         overflow: 'hidden',
         background: '#000',
       }}
@@ -67,6 +69,8 @@ function ReceptionVideoCarousel() {
       <video
         ref={videoRef}
         key={video.src}
+        poster={video.poster}
+        preload="none"
         loop
         muted
         playsInline
@@ -112,7 +116,7 @@ function ReceptionVideoCarousel() {
 
 export default function ReceptionSection() {
   return (
-    <section style={{ background: '#ffffff', padding: '56px 28px' }}>
+    <section style={{ background: '#ffffff', padding: '48px 28px' }}>
       <div style={{ width: '100%', maxWidth: 440, margin: '0 auto' }}>
         <div className="reveal" style={{ textAlign: 'center', marginBottom: 28 }}>
           <span style={{ fontSize: 11, letterSpacing: 4, color: '#c9a84c', fontWeight: 500, display: 'block', marginBottom: 12 }}>

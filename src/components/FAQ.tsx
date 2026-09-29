@@ -27,7 +27,7 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(0)
 
   return (
-    <section style={{ background: '#ffffff', padding: '56px 24px' }}>
+    <section style={{ background: '#ffffff', padding: '48px 24px' }}>
       <div style={{ maxWidth: 640, margin: '0 auto' }}>
         <div className="reveal" style={{ textAlign: 'center', marginBottom: 32 }}>
           <span style={{ fontSize: 11, letterSpacing: 4, color: '#c9a84c', fontWeight: 500, display: 'block', marginBottom: 10 }}>

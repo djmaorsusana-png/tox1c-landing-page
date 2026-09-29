@@ -235,3 +235,31 @@ body {
 .btn-submit:active:not(:disabled) {
   transform: translateY(0);
 }
+
+/* ─── Stories slider ─── */
+@keyframes storyProgress {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+.story-progress {
+  animation-name: storyProgress;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+@keyframes kenburns {
+  from { transform: scale(1); }
+  to   { transform: scale(1.1); }
+}
+.kenburns {
+  animation: kenburns 6.5s ease-out forwards;
+}
+.story-arrow { display: none; }
+@media (min-width: 768px) {
+  .story-arrow { display: flex; }
+}
+.story img {
+  -webkit-touch-callout: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .kenburns { animation: none; }
+}

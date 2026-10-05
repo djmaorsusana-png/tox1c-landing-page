@@ -10,6 +10,7 @@ import FAQ from './components/FAQ'
 import SimpleContact from './components/SimpleContact'
 import Footer from './components/Footer'
 import WhatsAppFloat from './components/WhatsAppFloat'
+import StickyCTA from './components/StickyCTA'
 
 export default function App() {
   useEffect(() => {
@@ -45,6 +46,7 @@ export default function App() {
       <SimpleContact />
       <Footer />
       <WhatsAppFloat />
+      <StickyCTA />
     </>
   )
 }

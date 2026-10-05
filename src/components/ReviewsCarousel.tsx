@@ -52,6 +52,25 @@ export default function ReviewsCarousel() {
     setCurrent(index)
   }
 
+  // Keep the dots in sync with swipes: the active card is the one snapped to the track's start (right edge in RTL)
+  const scrollFrame = useRef(0)
+  function handleScroll() {
+    if (scrollFrame.current) return
+    scrollFrame.current = requestAnimationFrame(() => {
+      scrollFrame.current = 0
+      const track = trackRef.current
+      if (!track) return
+      const start = track.getBoundingClientRect().right - 24
+      let best = 0
+      let bestDist = Infinity
+      Array.from(track.children).forEach((el, i) => {
+        const dist = Math.abs(el.getBoundingClientRect().right - start)
+        if (dist < bestDist) { bestDist = dist; best = i }
+      })
+      setCurrent(best)
+    })
+  }
+
   function prev() { scrollTo(Math.max(0, current - 1)) }
   function next() { scrollTo(Math.min(reviews.length - 1, current + 1)) }
 
@@ -84,7 +103,7 @@ export default function ReviewsCarousel() {
         }}>
           <span style={{ color: '#c9a84c', fontSize: 13, letterSpacing: 2 }}>★★★★★</span>
           <span style={{ width: 1, height: 12, background: 'rgba(255,255,255,0.15)' }} />
-          <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.8)', letterSpacing: 1 }}>93 ביקורות</span>
+          <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.8)', letterSpacing: 1 }}>94 ביקורות</span>
         </div>
 
         {/* Quote marks */}
@@ -127,9 +146,7 @@ export default function ReviewsCarousel() {
         }}>
           <span style={{ fontSize: 12, color: '#0a0a0a', fontWeight: 700 }}>{heroQuote.name}</span>
           <span style={{ width: 1, height: 10, background: 'rgba(0,0,0,0.15)' }} />
-          <span style={{ fontSize: 11, color: 'rgba(10,10,10,0.4)', letterSpacing: 1 }}>{heroQuote.date}</span>
-          <span style={{ width: 1, height: 10, background: 'rgba(0,0,0,0.15)' }} />
-          <span style={{ fontSize: 10, color: '#c9a84c', letterSpacing: 1 }}>✓ מאומת</span>
+          <span style={{ fontSize: 11, color: 'rgba(10,10,10,0.55)', letterSpacing: 1 }}>{heroQuote.date}</span>
         </div>
       </div>
 
@@ -166,11 +183,11 @@ export default function ReviewsCarousel() {
           scrollbarWidth: 'none',
         }}
         className="hide-scrollbar"
+        onScroll={handleScroll}
       >
         {reviews.map((r, i) => (
           <div
             key={i}
-            onClick={() => setCurrent(i)}
             className="review-card"
             style={{
               flexShrink: 0,
@@ -183,16 +200,15 @@ export default function ReviewsCarousel() {
               display: 'flex',
               flexDirection: 'column',
               gap: 14,
-              cursor: 'pointer',
             }}
           >
-            <span style={{ color: '#c9a84c', fontSize: 13, letterSpacing: 3 }}>★★★★★</span>
+            <span aria-label="5 כוכבים" style={{ color: '#c9a84c', fontSize: 13, letterSpacing: 3 }}>★★★★★</span>
             <p style={{ fontSize: 14, lineHeight: 1.75, color: 'rgba(10,10,10,0.6)', margin: 0, flex: 1 }}>
               {r.text}
             </p>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <span style={{ fontSize: 11, color: '#0a0a0a', fontWeight: 600 }}>{r.name}</span>
-              <span style={{ fontSize: 10, letterSpacing: 1, color: 'rgba(10,10,10,0.25)' }}>{r.date} · מאומת</span>
+              <span style={{ fontSize: 10, letterSpacing: 1, color: 'rgba(10,10,10,0.5)' }}>{r.date} · מאומת</span>
             </div>
           </div>
         ))}
@@ -204,6 +220,8 @@ export default function ReviewsCarousel() {
           <button
             key={i}
             onClick={() => scrollTo(i)}
+            aria-label={`ביקורת ${i + 1} מתוך ${reviews.length}`}
+            aria-current={i === current}
             style={{
               width: i === current ? 18 : 6,
               height: 6,
@@ -212,7 +230,7 @@ export default function ReviewsCarousel() {
               background: i === current ? '#0a0a0a' : 'rgba(10,10,10,0.15)',
               cursor: 'pointer',
               padding: 0,
-              transition: 'all 0.3s ease',
+              transition: 'width 0.3s ease, background 0.3s ease',
             }}
           />
         ))}
@@ -228,13 +246,30 @@ export default function ReviewsCarousel() {
           style={{
             fontSize: 12,
             letterSpacing: 2,
-            color: 'rgba(10,10,10,0.35)',
+            color: 'rgba(10,10,10,0.55)',
             paddingBottom: 2,
           }}
         >
           לכל הביקורות האמיתיות ב-mit4mit ←
         </a>
 
+        <a
+          href="#form"
+          className="btn-primary"
+          style={{
+            background: '#0a0a0a',
+            color: '#ffffff',
+            padding: '15px 32px',
+            borderRadius: 3,
+            fontSize: 13,
+            fontWeight: 700,
+            letterSpacing: 2,
+            textDecoration: 'none',
+            display: 'inline-block',
+          }}
+        >
+          בדקו זמינות לתאריך שלכם
+        </a>
       </div>
     </section>
   )

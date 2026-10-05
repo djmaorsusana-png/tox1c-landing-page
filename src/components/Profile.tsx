@@ -26,6 +26,8 @@ export default function Profile() {
         >
           <img
             src="/images/portrait-dark.webp"
+            width={600}
+            height={900}
             loading="lazy"
             decoding="async"
             alt="מאור ואופק — TOX1C"

@@ -15,7 +15,7 @@ const faqs = [
   },
   {
     q: 'כמה זה עולה בערך?',
-    a: 'המחיר משתנה לפי תאריך, אולם וגודל האירוע. שלחו לנו פרטים בטופס או בווצאפ ונחזור אליכם עם הצעת מחיר מדויקת תוך 24 שעות.',
+    a: 'המחיר נקבע לפי התאריך, האולם והחבילה שתבחרו (חתונה מלאה או קבלת פנים בלבד). שלחו לנו תאריך בטופס או בווצאפ ונחזור תוך 24 שעות עם הצעת מחיר מדויקת, בלי התחייבות.',
   },
   {
     q: 'עד מתי צריך לסגור תאריך?',
@@ -67,9 +67,11 @@ export default function FAQ() {
                     fontFamily: 'inherit',
                   }}
                   aria-expanded={isOpen}
+                  aria-controls={`faq-${i}`}
                 >
                   <span style={{ fontSize: 14.5, fontWeight: 700, color: '#0a0a0a' }}>{item.q}</span>
                   <span
+                    aria-hidden="true"
                     style={{
                       fontSize: 18,
                       color: '#c9a84c',
@@ -81,14 +83,17 @@ export default function FAQ() {
                     +
                   </span>
                 </button>
+                {/* 0fr → 1fr animates to the answer's real height, so long answers never clip */}
                 <div
+                  id={`faq-${i}`}
+                  aria-hidden={!isOpen}
                   style={{
-                    maxHeight: isOpen ? 200 : 0,
-                    transition: 'max-height 0.3s ease',
-                    overflow: 'hidden',
+                    display: 'grid',
+                    gridTemplateRows: isOpen ? '1fr' : '0fr',
+                    transition: 'grid-template-rows 0.3s ease',
                   }}
                 >
-                  <p style={{ fontSize: 13.5, lineHeight: 1.75, color: 'rgba(10,10,10,0.55)', padding: '0 18px 18px' }}>
+                  <p style={{ overflow: 'hidden', fontSize: 13.5, lineHeight: 1.75, color: 'rgba(10,10,10,0.65)', padding: isOpen ? '0 18px 18px' : '0 18px' }}>
                     {item.a}
                   </p>
                 </div>

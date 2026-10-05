@@ -32,6 +32,7 @@ export default function Footer() {
           <a
             key={l.label}
             href={l.href}
+            data-track={l.label === 'WhatsApp' ? 'footer' : undefined}
             target={l.href.startsWith('http') ? '_blank' : undefined}
             rel="noopener noreferrer"
             style={{

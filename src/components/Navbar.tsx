@@ -32,7 +32,7 @@ export default function Navbar() {
           ? 'rgba(255,255,255,0.97)'
           : 'linear-gradient(to bottom, rgba(244,244,244,0.9) 60%, transparent)',
         borderBottom: scrolled ? '1px solid rgba(0,0,0,0.08)' : 'none',
-        transition: 'all 0.3s ease',
+        transition: 'background 0.3s ease',
       }}
     >
       <a
@@ -86,6 +86,8 @@ export default function Navbar() {
       <button
         className="md:hidden"
         onClick={() => setMenuOpen(!menuOpen)}
+        aria-expanded={menuOpen}
+        aria-controls="mobile-menu"
         style={{ background: 'none', border: 'none', color: '#0a0a0a', cursor: 'pointer', fontSize: 22 }}
         aria-label="תפריט"
       >
@@ -94,6 +96,7 @@ export default function Navbar() {
 
       {menuOpen && (
         <div
+          id="mobile-menu"
           style={{
             position: 'absolute',
             top: '100%',

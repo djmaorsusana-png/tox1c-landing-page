@@ -65,6 +65,8 @@ export default function Hero() {
           src="/images/hero-silhouette.webp"
           srcSet="/images/hero-silhouette-mobile.webp 1125w, /images/hero-silhouette.webp 1920w"
           sizes="100vw"
+          width={1920}
+          height={3732}
           fetchPriority="high"
           alt="TOX1C — Maor & Ofek"
           className="hero-img"
@@ -168,16 +170,21 @@ export default function Hero() {
         </a>
 
         {/* Trust badge */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 18, direction: 'rtl' }}>
-          <span style={{ color: '#c9a84c', fontSize: 12, letterSpacing: 2 }}>★★★★★</span>
-          <span style={{ width: 1, height: 11, background: 'rgba(255,255,255,0.2)' }} />
-          <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', letterSpacing: 0.3 }}>
-            93 ביקורות · mit4mit
+        <a
+          href="https://www.mit4mit.co.il/biz/103387"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 18, direction: 'rtl', textDecoration: 'none', padding: '6px 4px' }}
+        >
+          <span aria-hidden="true" style={{ color: '#c9a84c', fontSize: 14, letterSpacing: 2 }}>★★★★★</span>
+          <span aria-hidden="true" style={{ width: 1, height: 12, background: 'rgba(255,255,255,0.3)' }} />
+          <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.85)', fontWeight: 600, textDecoration: 'underline', textUnderlineOffset: 3, textDecorationColor: 'rgba(255,255,255,0.35)' }}>
+            94 ביקורות 5 כוכבים ב-mit4mit
           </span>
-        </div>
+        </a>
 
         {/* Scroll indicator — mouse icon with animated dot */}
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, marginTop: 32 }}>
+        <div aria-hidden="true" className="hero-scroll" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, marginTop: 32 }}>
           <span style={{ fontSize: 8, letterSpacing: 3, color: 'rgba(255,255,255,0.2)' }}>SCROLL</span>
           <div style={{
             width: 22,

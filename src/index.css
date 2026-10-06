@@ -10,7 +10,7 @@
   --color-gray-mid: #222229;
   --color-muted: #5a5a65;
 
-  --font-display: "Bebas Neue", sans-serif;
+  --font-display: "Bebas Neue", "Karantina", sans-serif;
   --font-body: "Noto Sans Hebrew", system-ui, sans-serif;
 }
 
@@ -31,10 +31,24 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ─── Touch: no tap delay, no long-press text selection on controls ─── */
+button, a, [role="button"] {
+  touch-action: manipulation;
+}
+button, .btn-primary, .btn-submit, .sticky-cta a, .wa-float {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 body {
-  background: #ffffff;
+  /* Warm ivory with a faint film grain */
+  background-color: #f7f4ee;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
   color: #0a0a0a;
   font-family: "Noto Sans Hebrew", system-ui, sans-serif;
   direction: rtl;
@@ -44,7 +58,8 @@ body {
 
 /* ─── Utility classes ─── */
 .bebas {
-  font-family: "Bebas Neue", sans-serif;
+  /* Bebas has no Hebrew glyphs; Karantina picks those up instead of a system font */
+  font-family: "Bebas Neue", "Karantina", sans-serif;
 }
 
 .eyebrow {
@@ -60,7 +75,7 @@ body {
   width: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: #f0f0f0;
+  background: #efe9df;
 }
 ::-webkit-scrollbar-thumb {
   background: rgba(10,10,10,0.2);
@@ -99,7 +114,8 @@ body {
     max-height: 80vh;
     max-width: 1100px;
     width: 100%;
-    border-radius: 8px;
+    border-radius: 18px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 16px 40px rgba(40, 30, 10, 0.14);
   }
 }
 
@@ -148,8 +164,10 @@ body {
   transform: translateX(105%);
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.btn-hover:hover::before {
-  transform: translateX(0);
+@media (hover: hover) and (pointer: fine) {
+  .btn-hover:hover::before {
+    transform: translateX(0);
+  }
 }
 
 /* ─── CTA primary button — gold border reveal on hover ─── */
@@ -167,15 +185,17 @@ body {
   transition: border-color 0.4s ease;
   pointer-events: none;
 }
-.btn-primary:hover {
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18) !important;
-  transform: translateY(-2px) !important;
-}
-.btn-primary:hover::after {
-  border-color: rgba(201, 168, 76, 0.55);
+@media (hover: hover) and (pointer: fine) {
+  .btn-primary:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18) !important;
+    transform: translateY(-2px) !important;
+  }
+  .btn-primary:hover::after {
+    border-color: rgba(201, 168, 76, 0.55);
+  }
 }
 .btn-primary:active {
-  transform: translateY(0) !important;
+  transform: scale(0.97) !important;
 }
 
 /* ─── Text link underline draw ─── */
@@ -187,14 +207,16 @@ body {
   content: '';
   position: absolute;
   bottom: -1px;
-  left: 0;
+  inset-inline-start: 0;
   width: 0;
   height: 1px;
   background: currentColor;
   transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.link-draw:hover::after {
-  width: 100%;
+@media (hover: hover) and (pointer: fine) {
+  .link-draw:hover::after {
+    width: 100%;
+  }
 }
 
 /* ─── Review card hover ─── */
@@ -203,10 +225,12 @@ body {
               box-shadow 0.35s ease,
               border-color 0.35s ease !important;
 }
-.review-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.07) !important;
-  border-color: rgba(0, 0, 0, 0.22) !important;
+@media (hover: hover) and (pointer: fine) {
+  .review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35) !important;
+    border-color: rgba(201, 168, 76, 0.45) !important;
+  }
 }
 
 /* ─── Input gold focus ─── */
@@ -232,15 +256,17 @@ body {
   background-size: 200% auto !important;
   transition: background-position 0s, box-shadow 0.3s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1) !important;
 }
-.btn-submit:hover:not(:disabled) {
-  background: linear-gradient(135deg, #1a1a1a 0%, #3a3a3a 50%, #1a1a1a 100%) !important;
-  background-size: 200% auto !important;
-  animation: btnShimmer 1.2s linear infinite !important;
-  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.25) !important;
-  transform: translateY(-2px);
+@media (hover: hover) and (pointer: fine) {
+  .btn-submit:hover:not(:disabled) {
+    background: linear-gradient(135deg, #1a1a1a 0%, #3a3a3a 50%, #1a1a1a 100%) !important;
+    background-size: 200% auto !important;
+    animation: btnShimmer 1.2s linear infinite !important;
+    box-shadow: 0 6px 28px rgba(0, 0, 0, 0.25) !important;
+    transform: translateY(-2px);
+  }
 }
 .btn-submit:active:not(:disabled) {
-  transform: translateY(0);
+  transform: scale(0.97);
 }
 
 /* ─── Stories slider ─── */
@@ -281,13 +307,20 @@ body {
   display: flex;
   gap: 10px;
   padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
-  background: rgba(255, 255, 255, 0.96);
+  background: rgba(247, 244, 238, 0.72);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
   border-top: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
   transform: translateY(100%);
   transition: transform 0.3s ease;
 }
 .sticky-cta.is-visible { transform: translateY(0); }
+.sticky-cta-main, .sticky-cta-wa {
+  transition: transform 160ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sticky-cta-main:active, .sticky-cta-wa:active { transform: scale(0.97); }
+.wa-float:active .wa-btn { transform: scale(0.94) !important; }
 .sticky-cta-main {
   flex: 1;
   display: flex;
@@ -321,6 +354,106 @@ body {
 }
 @media (prefers-reduced-motion: reduce) {
   .sticky-cta, .wa-float { transition: none; }
+}
+
+/* ─── Glass chrome: navbar, mobile menu and sticky CTA float over the page ─── */
+/* The navbar's blur lives on ::before so the nav isn't a backdrop root and the menu inside it can blur the page too */
+.nav-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(247, 244, 238, 0.72);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.nav-glass.is-scrolled::before { opacity: 1; }
+/* ─── Mobile menu: drops in from the navbar, stays mounted so it can exit ─── */
+.mobile-menu {
+  background: rgba(247, 244, 238, 0.75);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(180%);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  transform: translateY(-8px);
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 200ms cubic-bezier(0.22, 1, 0.36, 1),
+              visibility 0s 200ms;
+}
+.mobile-menu.is-open {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto;
+  transition-delay: 0s;
+}
+
+/* Fallbacks come after every glass rule so they win */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .nav-glass::before, .mobile-menu, .sticky-cta { background: rgba(247, 244, 238, 0.97); }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .nav-glass::before, .mobile-menu, .sticky-cta {
+    background: #f7f4ee;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+/* ─── Form: success confirmation and inline errors ease in ─── */
+@keyframes successIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes checkPop {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.success-in { animation: successIn 400ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+.success-check { animation: checkPop 360ms cubic-bezier(0.34, 1.56, 0.64, 1) 80ms both; }
+.fade-in { animation: fadeIn 150ms ease-out both; }
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu { transform: none; }
+  .success-in, .success-check { animation-name: fadeIn; }
+}
+
+/* ─── Media: soft corners, layered shadow, a hairline of light on the edge ─── */
+.media-frame {
+  border-radius: 18px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 12px 32px rgba(40, 30, 10, 0.14);
+}
+.media-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+  pointer-events: none;
+}
+
+/* ─── Image reveal: wipes up once, the first time its .reveal parent scrolls into view ─── */
+/* Triggered by the parent because IntersectionObserver ignores a fully clipped target.
+   Negative insets on the open state keep the frame's shadow from being clipped. */
+.reveal-clip {
+  clip-path: inset(-48px -48px 100% -48px);
+  transition: clip-path 0.9s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.reveal.visible .reveal-clip { clip-path: inset(-48px); }
+@media (prefers-reduced-motion: reduce) {
+  .reveal-clip { clip-path: none; transition: none; }
+}
+
+/* Footer links clear the floating WhatsApp button on phones */
+@media (max-width: 767px) {
+  .site-footer { padding-bottom: calc(104px + env(safe-area-inset-bottom, 0px)) !important; }
 }
 
 /* Anchor jumps land below the fixed navbar */

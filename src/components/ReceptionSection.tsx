@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 
 const RECEPTION_VIDEOS = [
-  { src: '/reception/night-drums.mp4',  poster: '/reception/night-drums.webp' },
   { src: '/reception/sunset.mp4',       poster: '/reception/sunset.webp' },
+  { src: '/reception/night-drums.mp4',  poster: '/reception/night-drums.webp' },
   { src: '/reception/daylight.mp4',     poster: '/reception/daylight.webp' },
   { src: '/reception/garden-day.mp4',   poster: '/reception/garden-day.webp' },
   { src: '/reception/garden-night.mp4', poster: '/reception/garden-night.webp' },
@@ -59,6 +59,7 @@ function ReceptionVideoCarousel() {
   return (
     <div
       ref={wrapperRef}
+      className="media-frame reveal-clip"
       style={{
         position: 'relative',
         width: '100%',
@@ -120,7 +121,7 @@ function ReceptionVideoCarousel() {
 
 export default function ReceptionSection() {
   return (
-    <section style={{ background: '#ffffff', padding: '48px 28px' }}>
+    <section style={{ background: 'transparent', padding: '48px 28px' }}>
       <div style={{ width: '100%', maxWidth: 440, margin: '0 auto' }}>
         <div className="reveal" style={{ textAlign: 'center', marginBottom: 28 }}>
           <span style={{ fontSize: 11, letterSpacing: 4, color: '#c9a84c', fontWeight: 500, display: 'block', marginBottom: 12 }}>
@@ -128,19 +129,16 @@ export default function ReceptionSection() {
           </span>
           <h2 className="bebas" style={{ fontSize: 'clamp(32px, 9vw, 52px)', color: '#0a0a0a', lineHeight: 1, letterSpacing: '0.03em', margin: 0 }}>
             קבלת פנים{' '}
-            <span style={{ WebkitTextStroke: '1.5px #0a0a0a', color: 'transparent' }}>אחרת.</span>
+            <span style={{ color: '#b8975a' }}>אחרת.</span>
           </h2>
         </div>
         <div className="reveal delay-1"
           style={{
-            background: '#f5f5f5',
-            border: '1px solid rgba(0,0,0,0.1)',
-            borderRadius: 6,
-            overflow: 'hidden',
+            background: 'transparent',
           }}
         >
           <ReceptionVideoCarousel />
-          <div style={{ padding: '18px 24px 22px' }}>
+          <div style={{ padding: '24px 4px 0' }}>
             <span
               style={{
                 fontSize: 9,
@@ -157,7 +155,7 @@ export default function ReceptionSection() {
               style={{
                 fontSize: 13,
                 lineHeight: 1.75,
-                color: 'rgba(10,10,10,0.5)',
+                color: '#4a4a52',
                 margin: 0,
                 marginBottom: 16,
               }}
@@ -173,10 +171,9 @@ export default function ReceptionSection() {
                 display: 'flex',
                 alignItems: 'flex-start',
                 gap: 8,
-                padding: '10px 14px',
-                background: 'rgba(0,0,0,0.03)',
-                border: '1px dashed rgba(0,0,0,0.15)',
-                borderRadius: 4,
+                background: 'transparent',
+                borderTop: '1px solid rgba(184,151,90,0.3)',
+                padding: '16px 4px 0',
               }}
             >
               <span
@@ -195,7 +192,7 @@ export default function ReceptionSection() {
                 style={{
                   fontSize: 12,
                   lineHeight: 1.65,
-                  color: 'rgba(10,10,10,0.45)',
+                  color: '#4a4a52',
                   margin: 0,
                   direction: 'rtl',
                 }}

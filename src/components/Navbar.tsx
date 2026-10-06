@@ -18,6 +18,7 @@ export default function Navbar() {
 
   return (
     <nav
+      className={`nav-glass${scrolled ? ' is-scrolled' : ''}`}
       style={{
         position: 'fixed',
         top: 0,
@@ -29,8 +30,8 @@ export default function Navbar() {
         alignItems: 'center',
         padding: '20px 48px',
         background: scrolled
-          ? 'rgba(255,255,255,0.97)'
-          : 'linear-gradient(to bottom, rgba(244,244,244,0.9) 60%, transparent)',
+          ? 'transparent'
+          : 'linear-gradient(to bottom, rgba(247,244,238,0.9) 60%, transparent)',
         borderBottom: scrolled ? '1px solid rgba(0,0,0,0.08)' : 'none',
         transition: 'background 0.3s ease',
       }}
@@ -55,8 +56,8 @@ export default function Navbar() {
                 fontWeight: 600,
                 transition: 'color 0.2s',
               }}
-              onMouseEnter={(e) => ((e.target as HTMLElement).style.color = '#0a0a0a')}
-              onMouseLeave={(e) => ((e.target as HTMLElement).style.color = 'rgba(10,10,10,0.45)')}
+              onPointerEnter={(e) => e.pointerType === 'mouse' && ((e.target as HTMLElement).style.color = '#0a0a0a')}
+              onPointerLeave={(e) => ((e.target as HTMLElement).style.color = 'rgba(10,10,10,0.45)')}
             >
               {item.label}
             </a>
@@ -77,8 +78,8 @@ export default function Navbar() {
           textDecoration: 'none',
           transition: 'box-shadow 0.3s ease',
         }}
-        onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.boxShadow = '0 4px 20px rgba(0,0,0,0.2)')}
-        onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.boxShadow = 'none')}
+        onPointerEnter={(e) => e.pointerType === 'mouse' && ((e.currentTarget as HTMLElement).style.boxShadow = '0 4px 20px rgba(0,0,0,0.2)')}
+        onPointerLeave={(e) => ((e.currentTarget as HTMLElement).style.boxShadow = 'none')}
       >
         בדקו זמינות
       </a>
@@ -94,50 +95,48 @@ export default function Navbar() {
         {menuOpen ? '✕' : '☰'}
       </button>
 
-      {menuOpen && (
-        <div
-          id="mobile-menu"
+      <div
+        id="mobile-menu"
+        className={`mobile-menu${menuOpen ? ' is-open' : ''}`}
+        style={{
+          position: 'absolute',
+          top: '100%',
+          right: 0,
+          left: 0,
+          borderTop: '1px solid rgba(0,0,0,0.08)',
+          padding: '24px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 20,
+        }}
+      >
+        {links.map((item) => (
+          <a
+            key={item.href}
+            href={item.href}
+            onClick={() => setMenuOpen(false)}
+            style={{ color: 'rgba(10,10,10,0.85)', textDecoration: 'none', fontSize: 16, fontWeight: 600 }}
+          >
+            {item.label}
+          </a>
+        ))}
+        <a
+          href="#form"
+          onClick={() => setMenuOpen(false)}
           style={{
-            position: 'absolute',
-            top: '100%',
-            right: 0,
-            left: 0,
-            background: 'rgba(255,255,255,0.98)',
-            borderTop: '1px solid rgba(0,0,0,0.08)',
-            padding: '24px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 20,
+            background: '#0a0a0a',
+            color: '#ffffff',
+            padding: '12px 24px',
+            borderRadius: 2,
+            fontSize: 14,
+            fontWeight: 700,
+            textDecoration: 'none',
+            textAlign: 'center',
           }}
         >
-          {links.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={() => setMenuOpen(false)}
-              style={{ color: 'rgba(10,10,10,0.7)', textDecoration: 'none', fontSize: 16, fontWeight: 600 }}
-            >
-              {item.label}
-            </a>
-          ))}
-          <a
-            href="#form"
-            onClick={() => setMenuOpen(false)}
-            style={{
-              background: '#0a0a0a',
-              color: '#ffffff',
-              padding: '12px 24px',
-              borderRadius: 2,
-              fontSize: 14,
-              fontWeight: 700,
-              textDecoration: 'none',
-              textAlign: 'center',
-            }}
-          >
-            בדקו זמינות
-          </a>
-        </div>
-      )}
+          בדקו זמינות
+        </a>
+      </div>
     </nav>
   )
 }

@@ -1,6 +1,6 @@
 export default function Profile() {
   return (
-    <section id="about" style={{ background: '#f5f5f5', padding: '48px 24px' }}>
+    <section id="about" style={{ background: 'transparent', padding: '48px 24px' }}>
       <div
         style={{
           maxWidth: 900,
@@ -25,6 +25,7 @@ export default function Profile() {
           }}
         >
           <img
+            className="reveal-clip"
             src="/images/portrait-dark.webp"
             width={600}
             height={900}
@@ -43,7 +44,7 @@ export default function Profile() {
           <h2 className="bebas" style={{ fontSize: 'clamp(28px, 6vw, 40px)', color: '#0a0a0a', lineHeight: 1, marginBottom: 14 }}>
             MAOR &amp; <span style={{ color: '#c9a84c' }}>OFEK.</span>
           </h2>
-          <p style={{ fontSize: 14, lineHeight: 1.8, color: 'rgba(10,10,10,0.55)', maxWidth: 480, margin: '0 auto 18px' }}>
+          <p style={{ fontSize: 14, lineHeight: 1.8, color: '#4a4a52', maxWidth: 480, margin: '0 auto 18px' }}>
             לא זוג תקליטנים שהתחברו סתם — שניים שבנו יחד שפה חדשה לחתונות בישראל.
             מאות אירועים מאחורינו, תמיד עם הופעה חיה ותשומת לב מלאה לזוג.
           </p>
@@ -73,8 +74,8 @@ export default function Profile() {
                 alignItems: 'center',
                 gap: 10,
                 textDecoration: 'none',
-                background: '#f0f0f0',
-                border: '1px solid rgba(0,0,0,0.1)',
+                background: '#ffffff',
+                border: '1px solid rgba(184,151,90,0.3)',
                 borderRadius: 100,
                 padding: '6px 14px 6px 8px',
               }}

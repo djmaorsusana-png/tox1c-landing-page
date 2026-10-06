@@ -33,11 +33,15 @@ export default function SimpleContact() {
       eventDate: (form.elements.namedItem('eventDate') as HTMLInputElement).value.trim(),
     }
     try {
-      const res = await fetch(CRM_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      })
+      const post = (body: typeof data) =>
+        fetch(CRM_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        })
+      let res = await post(data)
+      // A CRM that still rejects free-text dates answers 400; resend without the date so the lead itself is never lost
+      if (res.status === 400 && data.eventDate) res = await post({ ...data, eventDate: '' })
       if (!res.ok) throw new Error('שגיאת שרת')
       trackLead()
       setSubmitted(true)
@@ -52,8 +56,8 @@ export default function SimpleContact() {
     <section
       id="form"
       style={{
-        background: '#ffffff',
-        borderTop: '1px solid rgba(0,0,0,0.08)',
+        background: 'transparent',
+        borderTop: '1px solid rgba(184,151,90,0.3)',
         padding: '48px 28px 56px',
         display: 'flex',
         flexDirection: 'column',
@@ -92,8 +96,8 @@ export default function SimpleContact() {
         <p
           style={{
             fontSize: 15,
-            color: 'rgba(10,10,10,0.45)',
-            marginTop: 14,
+            color: '#4a4a52',
+            margin: '14px auto 0',
             lineHeight: 1.7,
             maxWidth: 340,
           }}
@@ -135,17 +139,19 @@ export default function SimpleContact() {
           ref={successRef}
           tabIndex={-1}
           role="status"
+          className="success-in"
           style={{
             outline: 'none',
             textAlign: 'center',
             padding: '40px 24px',
-            border: '1px solid rgba(0,0,0,0.12)',
-            borderRadius: 4,
+            background: '#ffffff',
+            border: '1px solid rgba(184,151,90,0.3)',
+            borderRadius: 18,
             maxWidth: 440,
             width: '100%',
           }}
         >
-          <div aria-hidden="true" style={{ fontSize: 32, marginBottom: 12 }}>✓</div>
+          <div aria-hidden="true" className="success-check" style={{ fontSize: 32, marginBottom: 12 }}>✓</div>
           <p
             style={{
               fontSize: 16,
@@ -156,7 +162,7 @@ export default function SimpleContact() {
           >
             קלטנו אתכם.
           </p>
-          <p style={{ fontSize: 13, color: 'rgba(10,10,10,0.6)', lineHeight: 1.6, marginBottom: 20 }}>
+          <p style={{ fontSize: 13, color: '#4a4a52', lineHeight: 1.6, marginBottom: 20 }}>
             הפרטים אצלנו, נבדוק ביומן ונחזור אליכם ממש בקרוב.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: 20, flexWrap: 'wrap' }}>
@@ -196,6 +202,7 @@ export default function SimpleContact() {
             id="lead-name"
             name="name"
             type="text"
+            maxLength={100}
             autoComplete="name"
             placeholder="שם מלא"
             required
@@ -218,7 +225,7 @@ export default function SimpleContact() {
             style={inputStyle}
           />
           {phoneError && (
-            <p id="lead-phone-error" style={{ fontSize: 13, color: '#c62828', marginTop: -6 }}>
+            <p id="lead-phone-error" className="fade-in" style={{ fontSize: 13, color: '#c62828', marginTop: -6 }}>
               המספר לא נראה תקין. נסו בפורמט 050-1234567
             </p>
           )}
@@ -227,6 +234,7 @@ export default function SimpleContact() {
             id="lead-date"
             name="eventDate"
             type="text"
+            maxLength={60}
             autoComplete="off"
             placeholder="תאריך האירוע (גם משוער)"
             required
@@ -308,11 +316,11 @@ export default function SimpleContact() {
 }
 
 const inputStyle: React.CSSProperties = {
-  background: '#f5f5f5',
-  border: '1px solid rgba(0,0,0,0.12)',
+  background: '#ffffff',
+  border: '1px solid rgba(0,0,0,0.1)',
   borderRadius: 3,
   padding: '15px 18px',
-  fontSize: 14,
+  fontSize: 16,
   color: '#0a0a0a',
   outline: 'none',
   width: '100%',

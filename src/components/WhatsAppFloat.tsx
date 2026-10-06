@@ -19,7 +19,7 @@ export default function WhatsAppFloat() {
       className="wa-float"
       style={{
         position: 'fixed',
-        bottom: 28,
+        bottom: 'calc(28px + env(safe-area-inset-bottom, 0px))',
         left: 24,
         zIndex: 999,
         display: 'flex',
@@ -27,14 +27,15 @@ export default function WhatsAppFloat() {
         gap: 10,
         textDecoration: 'none',
       }}
-      onMouseEnter={(e) => {
+      onPointerEnter={(e) => {
+        if (e.pointerType !== 'mouse') return
         const btn = e.currentTarget.querySelector('.wa-btn') as HTMLElement
         if (btn) {
           btn.style.transform = 'scale(1.08)'
           btn.style.boxShadow = '0 6px 28px rgba(37,211,102,0.55)'
         }
       }}
-      onMouseLeave={(e) => {
+      onPointerLeave={(e) => {
         const btn = e.currentTarget.querySelector('.wa-btn') as HTMLElement
         if (btn) {
           btn.style.transform = 'scale(1)'

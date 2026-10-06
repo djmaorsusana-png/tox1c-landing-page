@@ -46,7 +46,7 @@ export default function Hero() {
         height: '100svh',
         position: 'relative',
         overflow: 'hidden',
-        background: '#f4f4f4',
+        background: '#f7f4ee',
         direction: 'ltr',
       }}
     >
@@ -94,7 +94,7 @@ export default function Hero() {
             right: 0,
             bottom: 0,
             background:
-              'linear-gradient(to bottom, rgba(244,244,244,0) 15%, rgba(10,10,10,0.45) 50%, rgba(10,10,10,0.78) 72%, rgba(10,10,10,0.3) 90%, rgba(245,245,245,1) 100%)',
+              'linear-gradient(to bottom, rgba(247,244,238,0.55) 0%, rgba(247,244,238,0) 15%, rgba(10,10,10,0.45) 50%, rgba(10,10,10,0.78) 72%, rgba(10,10,10,0.3) 90%, rgba(247,244,238,1) 100%)',
             pointerEvents: 'none',
           }}
         />

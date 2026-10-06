@@ -27,7 +27,7 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(0)
 
   return (
-    <section style={{ background: '#ffffff', padding: '48px 24px' }}>
+    <section style={{ background: 'transparent', padding: '48px 24px' }}>
       <div style={{ maxWidth: 640, margin: '0 auto' }}>
         <div className="reveal" style={{ textAlign: 'center', marginBottom: 32 }}>
           <span style={{ fontSize: 11, letterSpacing: 4, color: '#c9a84c', fontWeight: 500, display: 'block', marginBottom: 10 }}>
@@ -38,17 +38,15 @@ export default function FAQ() {
           </h2>
         </div>
 
-        <div className="reveal delay-1" style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+        <div className="reveal delay-1" style={{ display: 'flex', flexDirection: 'column', borderTop: '1px solid rgba(184,151,90,0.3)' }}>
           {faqs.map((item, i) => {
             const isOpen = open === i
             return (
               <div
                 key={i}
                 style={{
-                  border: '1px solid rgba(0,0,0,0.1)',
-                  borderRadius: 6,
+                  borderBottom: '1px solid rgba(184,151,90,0.3)',
                   overflow: 'hidden',
-                  background: '#f5f5f5',
                 }}
               >
                 <button
@@ -59,11 +57,11 @@ export default function FAQ() {
                     justifyContent: 'space-between',
                     alignItems: 'center',
                     gap: 12,
-                    padding: '16px 18px',
+                    padding: '20px 2px',
                     background: 'none',
                     border: 'none',
                     cursor: 'pointer',
-                    textAlign: 'right',
+                    textAlign: 'start',
                     fontFamily: 'inherit',
                   }}
                   aria-expanded={isOpen}
@@ -93,7 +91,7 @@ export default function FAQ() {
                     transition: 'grid-template-rows 0.3s ease',
                   }}
                 >
-                  <p style={{ overflow: 'hidden', fontSize: 13.5, lineHeight: 1.75, color: 'rgba(10,10,10,0.65)', padding: isOpen ? '0 18px 18px' : '0 18px' }}>
+                  <p style={{ overflow: 'hidden', fontSize: 13.5, lineHeight: 1.75, color: '#4a4a52', padding: isOpen ? '0 2px 20px' : '0 2px' }}>
                     {item.a}
                   </p>
                 </div>

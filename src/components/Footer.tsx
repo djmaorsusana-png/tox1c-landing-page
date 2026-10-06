@@ -7,9 +7,10 @@ export default function Footer() {
 
   return (
     <footer
+      className="site-footer"
       style={{
-        background: '#f5f5f5',
-        borderTop: '1px solid rgba(0,0,0,0.08)',
+        background: '#efe9df',
+        borderTop: '1px solid rgba(184,151,90,0.3)',
         padding: '40px 48px',
         display: 'flex',
         justifyContent: 'space-between',
@@ -42,8 +43,8 @@ export default function Footer() {
               letterSpacing: 2,
               transition: 'color 0.2s',
             }}
-            onMouseEnter={(e) => ((e.target as HTMLElement).style.color = '#0a0a0a')}
-            onMouseLeave={(e) =>
+            onPointerEnter={(e) => e.pointerType === 'mouse' && ((e.target as HTMLElement).style.color = '#0a0a0a')}
+            onPointerLeave={(e) =>
               ((e.target as HTMLElement).style.color = 'rgba(10,10,10,0.35)')
             }
           >

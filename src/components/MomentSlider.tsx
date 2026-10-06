@@ -74,7 +74,7 @@ export default function MomentSlider() {
   }
 
   return (
-    <section id="slider" style={{ background: '#f5f5f5', paddingTop: 64 }}>
+    <section id="slider" style={{ background: 'transparent', paddingTop: 64 }}>
       {/* Eyebrow */}
       <div className="reveal" style={{ textAlign: 'center', marginBottom: 28 }}>
         <span style={{ fontSize: 11, letterSpacing: 4, color: '#c9a84c', fontWeight: 500 }}>
@@ -225,7 +225,7 @@ export default function MomentSlider() {
           style={{
             fontSize: 15,
             lineHeight: 1.85,
-            color: 'rgba(10,10,10,0.5)',
+            color: '#4a4a52',
           }}
         >
           מהבמות של טומורולנד ועד לסצנה של ברזיל, דובאי ויפן — האירועים שלנו דורשים אנרגיה פסיכית ודיוק מקסימלי.
